@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsnxlyojwbfkf"
-path="res://.godot/imported/tilemap.png-b9bc55d9a3c5afef7bfb764e7fa08183.ctex"
+uid="uid://ysvwtv6av8q2"
+path="res://.godot/imported/face_idle.png-45e97b6e5a1a2e5e3c4a57bf1f238b39.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/tilemap.png"
-dest_files=["res://.godot/imported/tilemap.png-b9bc55d9a3c5afef7bfb764e7fa08183.ctex"]
+source_file="res://Sprites/melody/face_idle.png"
+dest_files=["res://.godot/imported/face_idle.png-45e97b6e5a1a2e5e3c4a57bf1f238b39.ctex"]
 
 [params]
 
