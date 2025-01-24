@@ -61,7 +61,8 @@ func _on_body_exited(body):
 	var ppos = player.position
 	
 	var collision_side
-	var offset
+	var offset = -1
+	
 	
 	if ppos.x < border.position.x: #gauche -> droite
 		offset = ppos.y - left[0]
@@ -75,4 +76,7 @@ func _on_body_exited(body):
 	elif ppos.y + magic_number > border.end.y: #bas -> haut
 		offset = ppos.x - bot[0]
 		collision_side = "bot"
+	
+	if offset == -1:
+		return
 	GameManager.change_scene(offset, collision_side, player)

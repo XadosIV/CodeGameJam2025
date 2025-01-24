@@ -42,7 +42,6 @@ func _set_is_recording(value: bool) -> void:
 	elif is_recording:
 		stop_record.emit()
 		is_recording = value
-		recording_player_inputs.reverse()
 	
 func _set_is_rewinding(value: bool) -> void:
 	if value and recording_player_inputs.size() > 0 and not is_rewinding and not is_recording:
@@ -56,4 +55,4 @@ func _append_position(position: Vector2) -> void:
 	recording_player_inputs.append(position)
 	
 func _clear_record() -> void:
-	recording_player_inputs.clear()		
+	recording_player_inputs.clear()
