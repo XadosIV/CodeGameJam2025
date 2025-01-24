@@ -60,10 +60,6 @@ func _process(delta):
 		mental_health_increase.emit(mental_health)
 		
 func change_scene(offset, side, player):
-	print(player)
-	print(side)
-	print(offset)
-	
 	var name = get_tree().current_scene.scene_file_path
 	var mapcord = name.split("/")[4].split(".")[0].split("_")
 	current_animation = player.current_animation

@@ -28,6 +28,7 @@ autoplay = "face_idle"
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 3
 scale = Vector2(0.2, 0.2)
+blend_mode = 2
 texture = ExtResource("8_3rn6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
