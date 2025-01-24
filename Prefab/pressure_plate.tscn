@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://oletqlwyohlq" path="res://Sprites/pressure_plate_up.png" id="1_jqcnv"]
 [ext_resource type="Script" path="res://Scripts/PressurePlateStaticBody2D.gd" id="1_tvdgn"]
 [ext_resource type="Texture2D" uid="uid://cm31tx2od1m6a" path="res://Sprites/pressure_plate_down.png" id="2_l5djw"]
-[ext_resource type="Texture2D" uid="uid://doaa0j4qt4v2g" path="res://Sprites/light/small_light.png" id="4_6atuc"]
+[ext_resource type="Texture2D" uid="uid://bvlgquyt1qdoj" path="res://Sprites/light/small_light2.png" id="4_65l5s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7a5i"]
 animations = [{
@@ -28,23 +28,24 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="Pressure_Plate" type="Area2D"]
-z_index = 1
 script = ExtResource("1_tvdgn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1
+position = Vector2(0, 16)
 sprite_frames = SubResource("SpriteFrames_u7a5i")
 animation = &"released"
 autoplay = "released"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 1)
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_f6a7a")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 z_index = 1
+position = Vector2(0, 16)
 blend_mode = 2
-texture = ExtResource("4_6atuc")
+texture = ExtResource("4_65l5s")
 texture_scale = 0.1
 
 [connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]

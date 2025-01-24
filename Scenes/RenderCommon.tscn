@@ -5,8 +5,8 @@
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
 [ext_resource type="Material" uid="uid://cgdr4d2hniyr5" path="res://Material/RenderCommon.tres" id="3_rneop"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
-[ext_resource type="Environment" uid="uid://dj0gto4fslol4" path="res://env.tres" id="6_4oj8h"]
-[ext_resource type="PackedScene" uid="uid://ba1odrnivdowk" path="res://Scenes/ui/OptionsGameMenu.tscn" id="7_pj0qr"]
+[ext_resource type="Environment" path="res://env.tres" id="6_4oj8h"]
+[ext_resource type="PackedScene" path="res://Scenes/ui/OptionsGameMenu.tscn" id="7_pj0qr"]
 [ext_resource type="Script" path="res://Scripts/OptionsMenuOpener.gd" id="7_ubium"]
 [ext_resource type="Script" path="res://Scripts/RewindController.gd" id="9_28lvp"]
 
