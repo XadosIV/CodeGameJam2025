@@ -1,16 +1,26 @@
 extends Control
 
-@onready var global_label = $MarginContainer/VBoxContainer/Volumes/Global/Label
-@onready var music_label = $MarginContainer/VBoxContainer/Volumes/Music/Label
-@onready var sfx_label = $MarginContainer/VBoxContainer/Volumes/Sound/Label
+@onready var global_label = $MarginContainer/VBoxContainer/Volumes/Global/VolumeAmount
+@onready var music_label = $MarginContainer/VBoxContainer/Volumes/Music/VolumeAmount
+@onready var sfx_label = $MarginContainer/VBoxContainer/Volumes/Sound/VolumeAmount
 
 @onready var global_slider = $MarginContainer/VBoxContainer/Volumes/Global/Volume
 @onready var music_slider = $MarginContainer/VBoxContainer/Volumes/Music/Volume
 @onready var sfx_slider = $MarginContainer/VBoxContainer/Volumes/Sound/Volume
 
+@onready var fullscreen : CheckButton = $MarginContainer/VBoxContainer/Fullscreen/CheckButton
+
 @export var main_menu: String = "res://Scenes/ui/MainMenu.tscn"
 
 func _ready() -> void:
+	var displayType: int = DisplayServer.mouse_get_mode();
+	var isFullscreen: bool = false
+	if displayType == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		isFullscreen = true
+	elif displayType == DisplayServer.WINDOW_MODE_WINDOWED:
+		isFullscreen = false
+	fullscreen.button_pressed = isFullscreen
+	
 	global_label.text = str(AudioController.global_volume)
 	music_label.text = str(AudioController.get_music_volume())
 	sfx_label.text = str(AudioController.get_sound_volume())
@@ -21,8 +31,6 @@ func _ready() -> void:
 
 func _on_back_pressed() -> void:
 	visible = false
-
-
 
 func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
 	var displayType: int = 0

@@ -1,8 +1,8 @@
 extends Control
 
-@onready var global_label = $MarginContainer/VBoxContainer/Volumes/Global/Label
-@onready var music_label = $MarginContainer/VBoxContainer/Volumes/Music/Label
-@onready var sfx_label = $MarginContainer/VBoxContainer/Volumes/Sound/Label
+@onready var global_label = $MarginContainer/VBoxContainer/Volumes/Global/VolumeAmount
+@onready var music_label = $MarginContainer/VBoxContainer/Volumes/Music/VolumeAmount
+@onready var sfx_label = $MarginContainer/VBoxContainer/Volumes/Sound/VolumeAmount
 
 @onready var global_slider = $MarginContainer/VBoxContainer/Volumes/Global/Volume
 @onready var music_slider = $MarginContainer/VBoxContainer/Volumes/Music/Volume
@@ -20,7 +20,7 @@ func _ready() -> void:
 	sfx_slider.value = AudioController.get_sound_volume()
 
 func _on_back_pressed() -> void:
-	visible = false
+	get_tree().change_scene_to_file(main_menu)
 
 func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
 	var displayType: int = 0
