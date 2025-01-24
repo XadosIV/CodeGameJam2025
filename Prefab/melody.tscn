@@ -203,7 +203,7 @@ frame_progress = 0.967439
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 3
 position = Vector2(0, 22.5)
-scale = Vector2(0.106031, 0.106031)
+scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_3rn6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -63,7 +63,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FogLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FogLayer"]
 material = SubResource("ShaderMaterial_q2niu")
@@ -74,7 +73,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TvLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="TvLayer"]
 material = SubResource("ShaderMaterial_si6sd")

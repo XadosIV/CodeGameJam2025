@@ -118,3 +118,4 @@ texture = ExtResource("2_evy4a")
 libraries = {
 "": SubResource("AnimationLibrary_sdysk")
 }
+autoplay = "idle"
