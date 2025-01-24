@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c67xiwu4qdb34"
-path="res://.godot/imported/skin.png-66ea2f0348900e417b5abac0902bfa49.ctex"
+uid="uid://dkqehtv1o0dxe"
+path="res://.godot/imported/19_Hospital_32x32.png-72ed51dbf6a387946ee2bc8862e32769.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/skin.png"
-dest_files=["res://.godot/imported/skin.png-66ea2f0348900e417b5abac0902bfa49.ctex"]
+source_file="res://19_Hospital_32x32.png"
+dest_files=["res://.godot/imported/19_Hospital_32x32.png-72ed51dbf6a387946ee2bc8862e32769.ctex"]
 
 [params]
 
