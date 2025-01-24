@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://cs3g4hxpgqrbl"]
+
+[ext_resource type="Shader" path="res://Shaders/god_ray.gdshader" id="1_feyu0"]
+[ext_resource type="Script" path="res://Scripts/MemoryHandler.gd" id="1_n6rrw"]
+[ext_resource type="Texture2D" uid="uid://fpxhb2ivdn00" path="res://icon.svg" id="2_evy4a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qbp6e"]
+radius = 22.0907
+
+[sub_resource type="Gradient" id="Gradient_xdgko"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 0.479509, 0.987309, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_oiirm"]
+gradient = SubResource("Gradient_xdgko")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ge0av"]
+resource_local_to_scene = true
+shader = ExtResource("1_feyu0")
+shader_parameter/spread = 0.3
+shader_parameter/cutoff = 0.5
+shader_parameter/size = 0.6
+shader_parameter/speed = 1.1
+shader_parameter/ray1_density = 8.0
+shader_parameter/ray2_density = 30.0
+shader_parameter/ray2_intensity = 0.4
+shader_parameter/core_intensity = 1.5
+shader_parameter/hdr = true
+shader_parameter/seed = 1.0
+shader_parameter/gradient = SubResource("GradientTexture2D_oiirm")
+
+[sub_resource type="Animation" id="Animation_gmudu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_7cm1x"]
+resource_name = "disable"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5.65686, 2),
+"update": 0,
+"values": [0.6, 40.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.833333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_37vn4"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sdysk"]
+_data = {
+"RESET": SubResource("Animation_gmudu"),
+"disable": SubResource("Animation_7cm1x"),
+"idle": SubResource("Animation_37vn4")
+}
+
+[node name="Memory" type="Area2D"]
+script = ExtResource("1_n6rrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qbp6e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_ge0av")
+texture = ExtResource("2_evy4a")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sdysk")
+}
+autoplay = "idle"

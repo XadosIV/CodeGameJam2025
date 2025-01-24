@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dkqehtv1o0dxe"
-path="res://.godot/imported/19_Hospital_32x32.png-72ed51dbf6a387946ee2bc8862e32769.ctex"
+path="res://.godot/imported/19_Hospital_32x32.png-e202c039ec1dbf463a07e3309bb7dc2b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://19_Hospital_32x32.png"
-dest_files=["res://.godot/imported/19_Hospital_32x32.png-72ed51dbf6a387946ee2bc8862e32769.ctex"]
+source_file="res://Sprites/19_Hospital_32x32.png"
+dest_files=["res://.godot/imported/19_Hospital_32x32.png-e202c039ec1dbf463a07e3309bb7dc2b.ctex"]
 
 [params]
 
