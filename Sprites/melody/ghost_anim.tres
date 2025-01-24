@@ -1,4 +1,4 @@
-[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://bdkon5wxubec7"]
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://cy2fctr4mtouy"]
 
 [ext_resource type="Texture2D" uid="uid://bdqpo7evyb5fr" path="res://Sprites/melody/ghost_back_idle.png" id="1_fweao"]
 [ext_resource type="Texture2D" uid="uid://t6uyg3hu70d2" path="res://Sprites/melody/ghost_face_idle.png" id="2_vpbph"]

@@ -35,20 +35,23 @@ func _process(delta: float) -> void:
 			_set_is_rewinding(false)	
 			
 func _set_is_recording(value: bool) -> void:
-	if value:
+	if value and not is_recording and not is_rewinding:
 		_clear_record()
 		start_record.emit()
-	elif not is_recording:
+		is_recording = value
+	elif is_recording:
 		stop_record.emit()
-	is_recording = value
+		is_recording = value
+		recording_player_inputs.reverse()
 	
 func _set_is_rewinding(value: bool) -> void:
-	if value:
+	if value and recording_player_inputs.size() > 0 and not is_rewinding and not is_recording:
 		start_rewind.emit()
-	elif not is_rewinding:
+		is_rewinding = value
+	elif is_rewinding:
 		stop_rewind.emit()
-	is_rewinding = value	
-	
+		is_rewinding = value
+		
 func _append_position(position: Vector2) -> void:
 	recording_player_inputs.append(position)
 	

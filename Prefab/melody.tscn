@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://vkuos3naf2al"]
 
-[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_ndsfk"]
-[ext_resource type="SpriteFrames" uid="uid://ckpjvs0ujqs6q" path="res://Sprites/melody/normal_anim.tres" id="2_yig61"]
+[ext_resource type="Script" path="res://Scripts/MelodyCharacterBody2D.gd" id="1_ndsfk"]
+[ext_resource type="SpriteFrames" uid="uid://bb835ho4kg1v3" path="res://Sprites/melody/normal_anim.tres" id="2_yig61"]
 [ext_resource type="Texture2D" uid="uid://doaa0j4qt4v2g" path="res://Sprites/light/small_light.png" id="8_3rn6u"]
 [ext_resource type="PackedScene" uid="uid://8846m653087k" path="res://Prefab/music_particles.tscn" id="9_18y7u"]
 

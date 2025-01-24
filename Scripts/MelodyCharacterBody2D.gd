@@ -57,9 +57,9 @@ func _input(event: InputEvent) -> void:
 		GameManager._set_is_play_box(false)
 		
 	if event.is_action_pressed(rewind_key):
-		GameManager.is_rewind_box = true
+		GameManager._set_is_rewind_box(true)
 	elif event.is_action_released(rewind_key):
-		GameManager.is_rewind_box = false		
+		GameManager._set_is_rewind_box(false)	
 
 func update_animation(direction: Vector2) -> void:
 	if direction.y < 0:
