@@ -1,6 +1,6 @@
 extends Node
 
-var clone: PackedScene = preload("res://Prefab/melody_clone.tscn")
+@export var clone_prefab: Resource
 var current_clone: Node2D
 
 func _ready() -> void:
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_start_rewind() -> void:
 	print("RewindController: start rewind")
-	current_clone = clone.instantiate()
+	current_clone = clone_prefab.instantiate()
 	get_parent().add_child(current_clone)
 	
 func _on_stop_rewind() -> void:
