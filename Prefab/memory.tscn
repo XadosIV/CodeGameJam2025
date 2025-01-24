@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://fpxhb2ivdn00" path="res://icon.svg" id="2_evy4a"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbp6e"]
-radius = 22.0907
+radius = 27.6
 
 [sub_resource type="Gradient" id="Gradient_xdgko"]
 colors = PackedColorArray(0, 0, 0, 1, 1, 0.479509, 0.987309, 1)
@@ -84,6 +84,8 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_37vn4"]
 resource_name = "idle"
+length = 2.0
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,6 +97,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:material:shader_parameter/size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 1.83333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.6, 0.8, 0.6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sdysk"]

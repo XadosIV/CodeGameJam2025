@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://8846m653087k"]
+
+[ext_resource type="Texture2D" uid="uid://d2uv22xgldm56" path="res://Sprites/black_note.png" id="1_rc7q6"]
+
+[node name="Music_Particles" type="CPUParticles2D"]
+self_modulate = Color(3, 3, 3, 1)
+z_index = 1
+lifetime = 3.0
+speed_scale = 0.5
+texture = ExtResource("1_rc7q6")
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 6.15
+initial_velocity_max = 6.15
+scale_amount_min = 0.5
+scale_amount_max = 1.2

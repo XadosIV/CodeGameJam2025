@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://fs0doync2c5w"]
+[gd_scene load_steps=12 format=3 uid="uid://fs0doync2c5w"]
 
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="1_dcnue"]
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="2_cxyta"]
+[ext_resource type="Shader" path="res://Shaders/chromatic.gdshader" id="2_giw5k"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="3_d30xr"]
 [ext_resource type="PackedScene" uid="uid://6rjfrl875xfq" path="res://Scenes/main.tscn" id="4_r456f"]
+[ext_resource type="PackedScene" uid="uid://8846m653087k" path="res://Prefab/music_particles.tscn" id="6_jytro"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3x1uu"]
 shader = ExtResource("1_dcnue")
@@ -21,6 +23,12 @@ shader_parameter/roll_line_amount = 0.3
 shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ibg8"]
+shader = ExtResource("2_giw5k")
+shader_parameter/chaos = 0.0
+shader_parameter/radius = 1.0
+shader_parameter/attenuation = 1.833
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q2niu"]
 shader = ExtResource("2_cxyta")
@@ -42,6 +50,7 @@ background_mode = 3
 tonemap_mode = 3
 glow_enabled = true
 glow_normalized = true
+glow_intensity = 1.9
 adjustment_enabled = true
 
 [node name="InitialScene" type="Node2D"]
@@ -56,6 +65,16 @@ energy = 0.0
 
 [node name="ColorRect" type="ColorRect" parent="CRTLayer"]
 material = SubResource("ShaderMaterial_3x1uu")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CRTLayer2" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CRTLayer2"]
+material = SubResource("ShaderMaterial_7ibg8")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -86,3 +105,6 @@ grow_vertical = 2
 environment = SubResource("Environment_x3esv")
 
 [node name="Main" parent="." instance=ExtResource("4_r456f")]
+
+[node name="Music_Particles" parent="." instance=ExtResource("6_jytro")]
+position = Vector2(144, 72)

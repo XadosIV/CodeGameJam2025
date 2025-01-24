@@ -1961,7 +1961,8 @@ position = Vector2(142, 44)
 zoom = Vector2(1.5, 1.5)
 process_callback = 0
 
-[node name="Memory" parent="." instance=ExtResource("17_u4v2l")]
-position = Vector2(3, 0)
-
 [node name="Melody" parent="." instance=ExtResource("4_mo8yc")]
+unique_name_in_owner = true
+
+[node name="Memory" parent="." instance=ExtResource("17_u4v2l")]
+position = Vector2(-109, 44)
