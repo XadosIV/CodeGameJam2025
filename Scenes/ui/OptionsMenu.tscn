@@ -103,20 +103,6 @@ value = 0.5
 custom_minimum_size = Vector2(24, 16)
 layout_mode = 2
 
-[node name="Resolution" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Resolution"]
-layout_mode = 2
-text = "Resolution"
-label_settings = SubResource("LabelSettings_rb3sh")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/Resolution"]
-layout_mode = 2
-
 [node name="Fullscreen" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
