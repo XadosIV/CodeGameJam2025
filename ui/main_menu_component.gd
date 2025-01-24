@@ -1,7 +1,7 @@
 extends Control
 
 @export var options_file: String = "res://Scenes/ui/OptionsMenu.tscn"
-@export var game_file: String = "res://Scenes/Map/14_4.tscn"
+@export var game_file: String = "res://Scenes/Map/11_3.tscn"
 
 func _ready() -> void:
 	AudioController.play_music(0)

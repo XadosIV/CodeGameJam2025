@@ -32,6 +32,19 @@ var player
 
 @onready var current_scene = get_tree().current_scene
 
+var current_scene = ""
+
+var door_memory = {
+	0: {
+			"11_3.tscn": [Vector2(-1, -7), Vector2(0, -7)],
+			"11_5.tscn": [Vector2(-1, 16), Vector2(0, 16)]
+		},
+	1: [],
+	2: []
+}
+
+var locked_tilemaps = ["TileMapLayer2"]
+
 func _ready():
 	player = get_tree().current_scene.get_node("Melody")
 
@@ -81,6 +94,13 @@ func change_scene(offset, side, player):
 	
 	print("changed to : " + mapcord[0]+"_"+mapcord[1]+".tscn")
 	get_tree().change_scene_to_file("res://Scenes/Map/"+mapcord[0]+"_"+mapcord[1]+".tscn")
+	
+	await get_tree().current_scene.ready
+	
+	current_scene = get_tree().current_scene.scene_file_path.split("/")[4]
+	if memories.has(true):
+		for i in memories.size()-1:
+			open_doors(i)
 
 func valid_map(coord):
 	return FileAccess.file_exists("res://Scenes/Map/"+coord[0]+"_"+coord[1]+".tscn")
@@ -111,6 +131,7 @@ func collect_memory(id:int):
 		memories[id] = true
 		print("Memory collected:", id)
 		print(memories)
+		open_doors(id)
 	
 func _set_is_play_box(value: bool) -> void:
 	if value:
@@ -125,3 +146,15 @@ func _set_is_rewind_box(value: bool) -> void:
 	else:
 		stop_rewind_box.emit()
 	is_rewind_box = value
+		
+func open_doors(id:int):
+	var atlas_cord = Vector2i(1,1)
+	if door_memory.has(id) && memories[id] == true:
+		for t in door_memory[id].keys():
+			print(current_scene)
+			if(t == current_scene):
+				var tilemap = get_tree().current_scene.get_node("TileMapLayer")
+				for tile in door_memory[id][t]:
+					tilemap.set_cell(tile,0,atlas_cord)
+		var unlocked_tilemap = get_tree().current_scene.get_node(locked_tilemaps[id])
+		unlocked_tilemap.set_visible(true)
