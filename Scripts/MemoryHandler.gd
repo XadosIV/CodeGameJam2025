@@ -17,6 +17,7 @@ func _on_body_entered(body: Node) -> void:
 		animator.play("disable")
 		print("enter")
 		GameManager.collect_memory(memory_id)
+		_disable_interaction()
 
 func _disable_interaction() -> void:
 	collision_layer = 0
