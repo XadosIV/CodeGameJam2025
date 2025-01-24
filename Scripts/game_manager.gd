@@ -10,6 +10,8 @@ var mental_health: float = max_mental
 
 @export var music_key: String = "ui_music"
 
+var memories: Array[bool] = [false, false, false]
+
 var player_pos = Vector2(200,0)
 var current_animation = "face"
 var last_dir = Vector2.ZERO
@@ -69,3 +71,9 @@ func change_scene():
 	
 	print("changed to : " + mapcord[0]+"_"+mapcord[1]+".tscn")
 	get_tree().change_scene_to_file("res://Scenes/Map/"+mapcord[0]+"_"+mapcord[1]+".tscn")
+	
+func collect_memory(id:int):
+	if id >= 0 and id < memories.size():
+		memories[id] = true
+		print("Memory collected:", id)
+		print(memories)

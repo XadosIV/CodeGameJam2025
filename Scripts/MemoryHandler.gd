@@ -6,6 +6,8 @@ signal player_entered
 @onready var sprite = $Sprite2D
 @onready var animator = $AnimationPlayer
 
+@export var memory_id: int
+
 func _ready() -> void:
 	connect("body_entered", _on_body_entered)
 
@@ -14,9 +16,7 @@ func _on_body_entered(body: Node) -> void:
 		emit_signal("player_entered")
 		animator.play("disable")
 		print("enter")
-		
-		
-
+		GameManager.collect_memory(memory_id)
 
 func _disable_interaction() -> void:
 	collision_layer = 0
