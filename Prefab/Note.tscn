@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://by0u7usyvmhsn"]
+
+[ext_resource type="Texture2D" uid="uid://b28l5ulhk5rwy" path="res://Sprites/note_spritesheet.png" id="1_36ooi"]
+
+[node name="Note" type="Sprite2D"]
+texture = ExtResource("1_36ooi")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
