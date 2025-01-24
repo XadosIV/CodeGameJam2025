@@ -1,0 +1,101 @@
+[gd_scene load_steps=10 format=3 uid="uid://bp6wu1nuqae5i"]
+
+[ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="1_lw4wa"]
+[ext_resource type="Shader" path="res://Shaders/chromatic.gdshader" id="2_kfj0k"]
+[ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
+[ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s6s76"]
+shader = ExtResource("1_lw4wa")
+shader_parameter/resolution = Vector2(320, 180)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.1
+shader_parameter/noise_amount = 0.03
+shader_parameter/interference_amount = 0.2
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 0.5
+shader_parameter/roll_line_amount = 0.3
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thx22"]
+shader = ExtResource("2_kfj0k")
+shader_parameter/chaos = 0.0
+shader_parameter/radius = 1.0
+shader_parameter/attenuation = 5.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kaal0"]
+shader = ExtResource("3_pdbbo")
+shader_parameter/color = null
+shader_parameter/OCTAVES = 4
+shader_parameter/enable_pixelation = true
+shader_parameter/pixelation_amount = 150
+shader_parameter/fog_direction = Vector2(1, 1)
+shader_parameter/scroll_noise_tex = false
+shader_parameter/noise_scroll_direction = Vector2(1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xpw5h"]
+shader = ExtResource("4_bodh3")
+shader_parameter/time = 1.817
+shader_parameter/screen_color = Color(0.8, 0.9, 1, 1)
+
+[sub_resource type="Environment" id="Environment_trsev"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+adjustment_enabled = true
+
+[node name="RenderCommon" type="Node2D"]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+color = Color(0, 0, 0, 1)
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.0
+
+[node name="CRTLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CRTLayer"]
+material = SubResource("ShaderMaterial_s6s76")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ChromaticLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="ChromaticLayer"]
+material = SubResource("ShaderMaterial_thx22")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FogLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="FogLayer"]
+material = SubResource("ShaderMaterial_kaal0")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TvLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="TvLayer"]
+material = SubResource("ShaderMaterial_xpw5h")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_trsev")
