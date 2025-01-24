@@ -216,5 +216,6 @@ scale = Vector2(0.5, 0.5)
 zoom = Vector2(1.5, 1.5)
 
 [node name="Music_Particles" parent="." instance=ExtResource("9_18y7u")]
+emitting = false
 
 [connection signal="draw" from="." to="." method="_on_draw"]

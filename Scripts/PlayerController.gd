@@ -1,13 +1,14 @@
 extends CharacterBody2D
 
 @onready var animator = $AnimatedSprite2D
+@onready var particle = $Music_Particles
 
 @export var speed: float = 300
 
-var last_direction = Vector2.ZERO  # Variable pour suivre la dernière direction
-var current_animation = "face"  # Variable pour suivre l'animation en cours
+var last_direction: Vector2   = Vector2.ZERO
+var current_animation: String = "face"
 
-var updated = false
+var updated: bool = false
 
 func _enter_tree():
 	if not updated:
@@ -15,8 +16,9 @@ func _enter_tree():
 
 func _ready():
 	update_animation(last_direction)
-		
-
+	GameManager.mental_health_increase.connect(_on_health_increase)
+	GameManager.mental_health_decrease.connect(_on_health_decrease)
+	
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = direction.normalized()
@@ -70,3 +72,9 @@ func update_pos():
 func _on_draw():
 	if not updated:
 		update_pos()
+		
+func _on_health_increase(newValue):
+	particle.emitting = true
+	
+func _on_health_decrease(newValue):
+	particle.emitting = false	
