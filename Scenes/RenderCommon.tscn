@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bp6wu1nuqae5i"]
+[gd_scene load_steps=11 format=3 uid="uid://bp6wu1nuqae5i"]
 
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="1_lw4wa"]
-[ext_resource type="Shader" path="res://Shaders/chromatic.gdshader" id="2_kfj0k"]
+[ext_resource type="Script" path="res://Scripts/MentalHealthEffect.gd" id="2_qc6h2"]
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
+[ext_resource type="Material" uid="uid://cgdr4d2hniyr5" path="res://Material/RenderCommon.tres" id="3_rneop"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s6s76"]
@@ -22,11 +23,9 @@ shader_parameter/roll_speed = 1.0
 shader_parameter/scan_line_strength = -8.0
 shader_parameter/pixel_strength = -2.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_thx22"]
-shader = ExtResource("2_kfj0k")
-shader_parameter/chaos = 0.0
-shader_parameter/radius = 1.0
-shader_parameter/attenuation = 5.0
+[sub_resource type="Curve" id="Curve_5wtg0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kaal0"]
 shader = ExtResource("3_pdbbo")
@@ -68,9 +67,12 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ChromaticLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_qc6h2")
+shader = ExtResource("3_rneop")
+effect_curve = SubResource("Curve_5wtg0")
 
 [node name="ColorRect" type="ColorRect" parent="ChromaticLayer"]
-material = SubResource("ShaderMaterial_thx22")
+material = ExtResource("3_rneop")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://cgdr4d2hniyr5"]
+
+[ext_resource type="Shader" path="res://Shaders/chromatic.gdshader" id="1_c5l6r"]
+
+[resource]
+shader = ExtResource("1_c5l6r")
+shader_parameter/chaos = 0.0
+shader_parameter/radius = 1.0
+shader_parameter/attenuation = 5.0

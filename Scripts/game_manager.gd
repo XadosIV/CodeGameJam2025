@@ -1,24 +1,30 @@
 extends Node2D
 
+signal mental_health_changed(new)
+
+@export var max_mental: float = 30
+@export var decrease_rate: float = 1
+@export var increase_rate: float = 5
+var mental_health: float = max_mental
+
 var player_pos = Vector2(200,0)
 var current_animation = "face"
 var last_dir = Vector2.ZERO
 
 var is_playing = false
 
-var mental_health = 2000
-
 func _ready():
 	pass
 
 func _process(delta):
 	if not is_playing:
-		mental_health -= 1
+		mental_health -= (decrease_rate * delta)
 	else:
-		if mental_health > 2000:
-			mental_health = 2000
+		if mental_health > max_mental:
+			mental_health = max_mental
 		else:
-			mental_health += 5
+			mental_health += (increase_rate * delta)
+	mental_health_changed.emit(mental_health)		
 
 func change_scene():
 	var name = get_tree().current_scene.scene_file_path
