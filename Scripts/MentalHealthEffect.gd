@@ -13,9 +13,8 @@ func _ready() -> void:
 	shader.set_shader_parameter(value, 0)
 	
 func _on_health_changed(newValue):
-	var percentage: float = GameManager.mental_health / GameManager.max_mental
+	var percentage: float = newValue / GameManager.max_mental
 	percentage = 1 - percentage
-	print(percentage)
 	var effect: float = effect_curve.sample(percentage)
 	var chaos: int = int(effect * max_chaos)
 	shader.set_shader_parameter(value,chaos)
