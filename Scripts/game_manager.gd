@@ -28,11 +28,7 @@ var is_rewind_box: bool = false
 var rng = RandomNumberGenerator.new()
 var ghost = preload("res://Prefab/ghost.tscn")
 
-var player
-
 @onready var current_scene = get_tree().current_scene
-
-var current_scene = ""
 
 var door_memory = {
 	0: {
@@ -45,13 +41,8 @@ var door_memory = {
 
 var locked_tilemaps = ["TileMapLayer2"]
 
-func _ready():
-	player = get_tree().current_scene.get_node("Melody")
 
 func _process(delta):
-	if current_scene != get_tree().current_scene:
-		player = get_tree().current_scene.get_node("Melody")
-		current_scene = get_tree().current_scene
 	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
 		mental_health_decrease.emit(mental_health)
@@ -69,6 +60,10 @@ func _process(delta):
 		mental_health_increase.emit(mental_health)
 		
 func change_scene(offset, side, player):
+	print(player)
+	print(side)
+	print(offset)
+	
 	var name = get_tree().current_scene.scene_file_path
 	var mapcord = name.split("/")[4].split(".")[0].split("_")
 	current_animation = player.current_animation
@@ -94,13 +89,6 @@ func change_scene(offset, side, player):
 	
 	print("changed to : " + mapcord[0]+"_"+mapcord[1]+".tscn")
 	get_tree().change_scene_to_file("res://Scenes/Map/"+mapcord[0]+"_"+mapcord[1]+".tscn")
-	
-	await get_tree().current_scene.ready
-	
-	current_scene = get_tree().current_scene.scene_file_path.split("/")[4]
-	if memories.has(true):
-		for i in memories.size()-1:
-			open_doors(i)
 
 func valid_map(coord):
 	return FileAccess.file_exists("res://Scenes/Map/"+coord[0]+"_"+coord[1]+".tscn")

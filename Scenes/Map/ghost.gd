@@ -8,7 +8,7 @@ var switch
 var limit = rng.randi_range(10,20)
 
 func _ready():
-	var ppos = GameManager.player.position
+	var ppos = get_tree().current_scene.get_node("Melody").position
 	
 	position = Vector2(rng.randi_range(ppos.x-500, ppos.x+500), rng.randi_range(ppos.y-500, ppos.y+500))
 	
