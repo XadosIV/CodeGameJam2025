@@ -18,7 +18,7 @@ func _ready():
 	update_animation(last_direction)
 	GameManager.mental_health_increase.connect(_on_health_increase)
 	GameManager.mental_health_decrease.connect(_on_health_decrease)
-	
+
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = direction.normalized()
