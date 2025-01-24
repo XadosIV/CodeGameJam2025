@@ -5,6 +5,7 @@
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
 [ext_resource type="Material" uid="uid://cgdr4d2hniyr5" path="res://Material/RenderCommon.tres" id="3_rneop"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
+[ext_resource type="Environment" uid="uid://dj0gto4fslol4" path="res://env.tres" id="6_4oj8h"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s6s76"]
 shader = ExtResource("1_lw4wa")
@@ -42,12 +43,6 @@ shader = ExtResource("4_bodh3")
 shader_parameter/time = 1.817
 shader_parameter/screen_color = Color(0.8, 0.9, 1, 1)
 
-[sub_resource type="Environment" id="Environment_trsev"]
-background_mode = 3
-glow_enabled = true
-glow_normalized = true
-adjustment_enabled = true
-
 [node name="RenderCommon" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
@@ -69,6 +64,7 @@ grow_vertical = 2
 [node name="ChromaticLayer" type="CanvasLayer" parent="."]
 script = ExtResource("2_qc6h2")
 shader = ExtResource("3_rneop")
+env = ExtResource("6_4oj8h")
 effect_curve = SubResource("Curve_5wtg0")
 
 [node name="ColorRect" type="ColorRect" parent="ChromaticLayer"]
@@ -100,4 +96,4 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_trsev")
+environment = ExtResource("6_4oj8h")
