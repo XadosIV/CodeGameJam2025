@@ -19,8 +19,11 @@ tile_map_data = PackedByteArray("AADx//n/AAAAAAAAAADx//r/AAAAAAEAAADx//v/AAAAAAE
 tile_set = ExtResource("2_2s5j7")
 
 [node name="Deco" type="TileMapLayer" parent="."]
+z_index = 1
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AADz/wUAAAAKAAwAAAA=")
+position = Vector2(0, -1)
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD3/wIAAAAKAAwAAAD7/wMAAAAGAAwAAAA=")
 tile_set = ExtResource("3_wv8hd")
 
 [node name="MapBorder" type="Area2D" parent="."]
