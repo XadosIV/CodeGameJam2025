@@ -3,28 +3,30 @@ extends Node2D
 signal mental_health_decrease(new)
 signal mental_health_increase(new)
 
+signal start_play_box
+signal stop_play_box
+
+signal start_rewind_box
+signal stop_rewind_box
+
 @export var max_mental: float = 30
 @export var decrease_rate: float = 1
 @export var increase_rate: float = 5
 var mental_health: float = max_mental
 
-@export var music_key: String = "ui_music"
+var player_pos = Vector2(200,0)
+var enter_side: String   = ""
+var corridor_offset: int = 0
+var current_animation: String = "face"
+var last_dir: Vector2         = Vector2.ZERO
 
 var memories: Array[bool] = [false, false, false]
 
-var player_pos = Vector2(200,0)
-var enter_side = ""
-var corridor_offset = 0
-var current_animation = "face"
-var last_dir = Vector2.ZERO
-
-var is_playing = false
-
-func _ready():
-	pass
+var is_playing_box: bool = false
+var is_rewind_box: bool = false
 
 func _process(delta):
-	if not is_playing:
+	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
 		mental_health_decrease.emit(mental_health)
 	else:
@@ -33,14 +35,7 @@ func _process(delta):
 		else:
 			mental_health += (increase_rate * delta)
 		mental_health_increase.emit(mental_health)
-	
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed(music_key):
-		is_playing = true
-	elif event.is_action_released(music_key):
-		is_playing = false
 		
-
 func change_scene(offset, side, player):
 	var name = get_tree().current_scene.scene_file_path
 	var mapcord = name.split("/")[4].split(".")[0].split("_")
@@ -97,3 +92,17 @@ func collect_memory(id:int):
 		memories[id] = true
 		print("Memory collected:", id)
 		print(memories)
+	
+func _set_is_play_box(value: bool) -> void:
+	if value:
+		start_play_box.emit()
+	else:
+		stop_play_box.emit()
+	is_playing_box = value
+	
+func _set_is_rewind_box(value: bool) -> void:
+	if value:
+		start_rewind_box.emit()
+	else:
+		stop_rewind_box.emit()
+	is_rewind_box = value

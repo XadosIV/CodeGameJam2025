@@ -2,11 +2,15 @@ extends CharacterBody2D
 
 @onready var animator = $AnimatedSprite2D
 @onready var particle = $Music_Particles
+@onready var record_timer: Timer = $Timer
 
 @export var speed: float = 300
 
 var last_direction: Vector2   = Vector2.ZERO
 var current_animation: String = "face"
+
+var box_key: String = "ui_box"
+var rewind_key: String = "ui_rewind"
 
 var updated: bool = false
 
@@ -16,12 +20,16 @@ func _enter_tree():
 
 func _ready():
 	update_animation(last_direction)
-	GameManager.mental_health_increase.connect(_on_health_increase)
-	GameManager.mental_health_decrease.connect(_on_health_decrease)
-
-
+	GameManager.start_play_box.connect(_on_start_play_box)
+	GameManager.stop_play_box.connect(_on_stop_play_box)
+	
+	RewindManager.current_record.connect(_on_current_record) # each tick, ask the RewindManager to record the current position
+	
+	record_timer.one_shot = true
+	record_timer.timeout.connect(_on_RecordTimer_timeout)
+	
 func _physics_process(delta: float) -> void:
-	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = direction.normalized()
 
 	# Si la direction a changé, mettre à jour l'animation
@@ -41,6 +49,17 @@ func _physics_process(delta: float) -> void:
 	# Si on n'est pas en mouvement, rester dans l'animation idle correspondant à la dernière direction
 	if direction == Vector2.ZERO:
 		play_animation(current_animation, direction)  # Garde l'animation idle correspondante
+		
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(box_key):
+		GameManager._set_is_play_box(true)
+	elif event.is_action_released(box_key):
+		GameManager._set_is_play_box(false)
+		
+	if event.is_action_pressed(rewind_key):
+		GameManager.is_rewind_box = true
+	elif event.is_action_released(rewind_key):
+		GameManager.is_rewind_box = false		
 
 func update_animation(direction: Vector2) -> void:
 	if direction.y < 0:
@@ -80,14 +99,24 @@ func update_pos():
 			position = Vector2(map.top[0]+GameManager.corridor_offset, map.border.position.y + 50)
 		"bot":
 			position = Vector2(map.bot[0] + GameManager.corridor_offset, map.border.end.y - 50)
-	
-
+			
 func _on_draw():
 	if not updated:
 		update_pos()
 		
-func _on_health_increase(newValue):
+func _on_start_play_box():
 	particle.emitting = true
+	record_timer.start()
 	
-func _on_health_decrease(newValue):
+func _on_stop_play_box():
 	particle.emitting = false	
+	if(not record_timer.is_stopped()):
+		record_timer.stop()
+	
+func _on_current_record():
+	print("record")
+	RewindManager._append_position(get_global_position())	
+	
+func _on_RecordTimer_timeout():	
+	print("fin des haricots")
+	RewindManager._set_is_recording(false)

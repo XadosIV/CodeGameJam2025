@@ -218,4 +218,8 @@ zoom = Vector2(1.5, 1.5)
 [node name="Music_Particles" parent="." instance=ExtResource("9_18y7u")]
 emitting = false
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="draw" from="." to="." method="_on_draw"]
