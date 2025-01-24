@@ -1,6 +1,6 @@
 extends Node2D
 
-var player_pos = Vector2(500,0)
+var player_pos = Vector2(200,0)
 var current_animation = "face"
 var last_dir = Vector2.ZERO
 
@@ -22,7 +22,7 @@ func _process(delta):
 
 func change_scene():
 	var name = get_tree().current_scene.scene_file_path
-	var mapcord = name.split("/")[3].split(".")[0].split("_")
+	var mapcord = name.split("/")[4].split(".")[0].split("_")
 	
 	var player = get_tree().current_scene.get_node("Melody")
 	var ppos = player.position
@@ -51,4 +51,4 @@ func change_scene():
 	
 	
 	print("changed to : " + mapcord[0]+"_"+mapcord[1]+".tscn")
-	get_tree().change_scene_to_file("res://Map/"+mapcord[0]+"_"+mapcord[1]+".tscn")
+	get_tree().change_scene_to_file("res://Scenes/Map/"+mapcord[0]+"_"+mapcord[1]+".tscn")

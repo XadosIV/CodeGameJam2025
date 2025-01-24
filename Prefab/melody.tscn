@@ -1,6 +1,6 @@
-[gd_scene load_steps=32 format=3 uid="uid://vkuos3naf2al"]
+[gd_scene load_steps=33 format=3 uid="uid://vkuos3naf2al"]
 
-[ext_resource type="Script" path="res://Scenes/PlayerController.gd" id="1_ndsfk"]
+[ext_resource type="Script" path="res://Scripts/PlayerController.gd" id="1_ndsfk"]
 [ext_resource type="Texture2D" uid="uid://ds6qwheuiusx1" path="res://Sprites/melody/back_idle.png" id="2_dkhls"]
 [ext_resource type="Texture2D" uid="uid://3jxep4utknwe" path="res://Sprites/melody/back_walk.png" id="3_7y0yl"]
 [ext_resource type="Texture2D" uid="uid://ysvwtv6av8q2" path="res://Sprites/melody/face_idle.png" id="4_sfl2l"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://djp4n5emq40l8" path="res://Sprites/melody/side_idle.png" id="6_8o5vd"]
 [ext_resource type="Texture2D" uid="uid://bdgk673nvhjth" path="res://Sprites/melody/side_walk.png" id="7_o7iqt"]
 [ext_resource type="Texture2D" uid="uid://doaa0j4qt4v2g" path="res://Sprites/light/small_light.png" id="8_3rn6u"]
+[ext_resource type="PackedScene" uid="uid://8846m653087k" path="res://Prefab/music_particles.tscn" id="9_18y7u"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_qhp0h"]
 light_mode = 1
@@ -186,19 +187,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xychm"]
-height = 39.0
+radius = 4.5
+height = 9.0
 
 [node name="Melody" type="CharacterBody2D"]
-position = Vector2(142, 44)
+position = Vector2(1, 0)
 scale = Vector2(2, 2)
 script = ExtResource("1_ndsfk")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("CanvasItemMaterial_qhp0h")
 sprite_frames = SubResource("SpriteFrames_kt5oh")
-animation = &"back_walk"
+animation = &"face_idle"
 autoplay = "face_idle"
-frame_progress = 0.967439
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 texture_filter = 3
@@ -207,11 +208,13 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("8_3rn6u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, 4.5)
+position = Vector2(0, 19.5)
 shape = SubResource("CapsuleShape2D_xychm")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 scale = Vector2(0.5, 0.5)
 zoom = Vector2(1.5, 1.5)
+
+[node name="Music_Particles" parent="." instance=ExtResource("9_18y7u")]
 
 [connection signal="draw" from="." to="." method="_on_draw"]

@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CodeGameJam"
-run/main_scene="res://Map/5_5.tscn"
+run/main_scene="res://Scenes/Map/5_5.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,15 +19,15 @@ config/icon="res://icon.svg"
 
 AudioController="*res://Audio/audio_controller.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
-GameManager="*res://game_manager.gd"
+GameManager="*res://Scripts/game_manager.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
 enabled=PackedStringArray()
-
-[physics]
-
-common/physics_interpolation=true
 
 [rendering]
 
