@@ -54,6 +54,8 @@ func _enter_tree():
 	initiated = true
 
 func _on_body_exited(body):
+	if body.name != "Melody":
+		return
 	var player = get_parent().get_node("%Melody")
 	var magic_number = player.get_node("CollisionShape2D").position.y * 2.5
 	var ppos = player.position

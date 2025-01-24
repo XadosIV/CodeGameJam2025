@@ -24,11 +24,35 @@ var memories: Array[bool] = [false, false, false]
 
 var is_playing_box: bool = false
 var is_rewind_box: bool = false
+var player_pos = Vector2(200,0)
+var enter_side = ""
+var corridor_offset = 0
+var current_animation = "face"
+var last_dir = Vector2.ZERO
+
+var rng = RandomNumberGenerator.new()
+var ghost = preload("res://Prefab/ghost.tscn")
+
+var player
+
+@onready var current_scene = get_tree().current_scene
+
+func _ready():
+	player = get_tree().current_scene.get_node("Melody")
 
 func _process(delta):
+	if current_scene != get_tree().current_scene:
+		player = get_tree().current_scene.get_node("Melody")
+		current_scene = get_tree().current_scene
 	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
 		mental_health_decrease.emit(mental_health)
+		
+		if mental_health < 20:
+			if rng.randi_range(1,60)==7:
+				var instance = ghost.instantiate()
+				get_tree().current_scene.add_child(instance)
+			
 	else:
 		if mental_health > max_mental:
 			mental_health = max_mental

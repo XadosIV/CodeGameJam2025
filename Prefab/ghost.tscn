@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://c23eq201rvb1k"]
+
+[ext_resource type="Script" path="res://Scenes/Map/ghost.gd" id="1_uianj"]
+[ext_resource type="SpriteFrames" uid="uid://bdkon5wxubec7" path="res://Sprites/melody/ghost_anim.tres" id="2_xm2qu"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m7lkp"]
+light_mode = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b47wk"]
+size = Vector2(13, 12)
+
+[node name="Ghost" type="CharacterBody2D"]
+z_index = 1
+z_as_relative = false
+scale = Vector2(2, 2)
+script = ExtResource("1_uianj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("CanvasItemMaterial_m7lkp")
+position = Vector2(0, -18)
+sprite_frames = ExtResource("2_xm2qu")
+animation = &"face_idle"
+autoplay = "face_idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.90735e-06)
+shape = SubResource("RectangleShape2D_b47wk")
