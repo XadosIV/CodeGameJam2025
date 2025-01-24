@@ -11,9 +11,4 @@ func _process(delta):
 
 
 func _on_body_entered(body):
-	if coord == HORIZONTAL:
-		body.position.x = point.position.x
-	elif coord == VERTICAL:
-		body.position.y = point.position.y
-	else:
-		body.position = point.position
+	GameManager.change_scene("main", "name")
