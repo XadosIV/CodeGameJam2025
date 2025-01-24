@@ -1,6 +1,6 @@
 extends Node
 
-@export var clone_prefab: Resource
+var clone_prefab: Resource = preload("res://Prefab/melody_clone.tscn")
 var current_clone: Node2D
 
 func _ready() -> void:
