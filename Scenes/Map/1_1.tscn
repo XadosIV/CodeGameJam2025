@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=4 uid="uid://cpc80wbl07h1y"]
+[gd_scene load_steps=7 format=4 uid="uid://cpc80wbl07h1y"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_0ngpk"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="2_qd8ve"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="3_3fqi5"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_wxqwx"]
+[ext_resource type="PackedScene" uid="uid://b6ug8dkk8uhyc" path="res://Prefab/pressure_plate.tscn" id="5_u2cg4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
 size = Vector2(3510.97, 1842.08)
@@ -28,5 +29,8 @@ script = ExtResource("4_wxqwx")
 position = Vector2(68.5, -19.9993)
 scale = Vector2(0.571068, 0.689439)
 shape = SubResource("RectangleShape2D_0bsht")
+
+[node name="Pressure_Plate" parent="." instance=ExtResource("5_u2cg4")]
+position = Vector2(357, 36)
 
 [connection signal="body_exited" from="MapBorder" to="MapBorder" method="_on_body_exited"]

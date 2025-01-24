@@ -11,7 +11,7 @@ func _ready() -> void:
 func _on_start_rewind() -> void:
 	print("RewindController: start rewind")
 	current_clone = clone_prefab.instantiate()
-	get_parent().add_child(current_clone)
+	get_tree().current_scene.add_child(current_clone)
 	
 func _on_stop_rewind() -> void:
 	print("RewindController: stop rewind")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://c1tbvxbeqok76"]
+[gd_scene load_steps=31 format=3 uid="uid://2ayeuet66owq"]
 
 [ext_resource type="Script" path="res://Scripts/CloneCharacterBody2D.gd" id="1_6wwws"]
 [ext_resource type="Texture2D" uid="uid://ds6qwheuiusx1" path="res://Sprites/melody/back_idle.png" id="2_wrkhj"]
