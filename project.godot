@@ -11,14 +11,13 @@ config_version=5
 [application]
 
 config/name="CodeGameJam"
-run/main_scene="res://Map/00.tscn"
+run/main_scene="res://Map/5_5.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 AudioController="*res://Audio/audio_controller.tscn"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 GameManager="*res://Scenes/game_manager.gd"
 
 [editor_plugins]

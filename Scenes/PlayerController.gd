@@ -5,7 +5,17 @@ extends CharacterBody2D
 @export var speed: float = 300
 
 var last_direction = Vector2.ZERO  # Variable pour suivre la dernière direction
-var current_animation = ""  # Variable pour suivre l'animation en cours
+var current_animation = "face"  # Variable pour suivre l'animation en cours
+
+var updated = false
+
+func _enter_tree():
+	if not updated:
+		update_pos()
+
+func _ready():
+	update_animation(last_direction)
+		
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -50,3 +60,13 @@ func play_animation(anim: String, direction: Vector2) -> void:
 		animator.play(anim+"_idle")
 	else:
 		animator.play(anim+"_walk")
+
+func update_pos():
+	position = GameManager.player_pos
+	updated = true
+	current_animation = GameManager.current_animation
+	last_direction = GameManager.last_dir
+
+func _on_draw():
+	if not updated:
+		update_pos()
