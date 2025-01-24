@@ -14,7 +14,6 @@ size = Vector2(3510.97, 1842.08)
 
 [node name="Melody" parent="." instance=ExtResource("2_qd8ve")]
 unique_name_in_owner = true
-z_index = 1
 position = Vector2(49, 57)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

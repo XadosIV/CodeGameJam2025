@@ -21,7 +21,6 @@ tile_set = ExtResource("2_3tf6g")
 unique_name_in_owner = true
 z_as_relative = false
 position = Vector2(2, 0)
-scale = Vector2(2, 2)
 
 [node name="MapBorder" type="Area2D" parent="."]
 script = ExtResource("3_j0cey")

@@ -18,17 +18,12 @@ var player_pos = Vector2(200,0)
 var enter_side: String   = ""
 var corridor_offset: int = 0
 var current_animation: String = "face"
-var last_dir: Vector2         = Vector2.ZERO
+var last_dir: Vector2 = Vector2.ZERO
 
 var memories: Array[bool] = [false, false, false]
 
 var is_playing_box: bool = false
 var is_rewind_box: bool = false
-var player_pos = Vector2(200,0)
-var enter_side = ""
-var corridor_offset = 0
-var current_animation = "face"
-var last_dir = Vector2.ZERO
 
 var rng = RandomNumberGenerator.new()
 var ghost = preload("res://Prefab/ghost.tscn")

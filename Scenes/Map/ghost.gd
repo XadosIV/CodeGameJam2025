@@ -20,7 +20,7 @@ func _ready():
 	switch = rng.randf_range(0.5, 3)
 
 func _process(delta):
-	if GameManager.is_playing:
+	if GameManager.is_playing_box:
 		if GameManager.mental_health >= limit:
 			queue_free()
 	switch -= delta
