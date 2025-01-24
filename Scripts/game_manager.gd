@@ -58,5 +58,33 @@ func change_scene(offset, side, player):
 		enter_side = "top"
 	
 	corridor_offset = offset
+	
+	if not valid_map(mapcord):
+		mapcord = find_map(enter_side, mapcord)
+	
 	print("changed to : " + mapcord[0]+"_"+mapcord[1]+".tscn")
 	get_tree().change_scene_to_file("res://Scenes/Map/"+mapcord[0]+"_"+mapcord[1]+".tscn")
+
+func valid_map(coord):
+	return FileAccess.file_exists("res://Scenes/Map/"+coord[0]+"_"+coord[1]+".tscn")
+
+func find_map(side, coord):
+	var floor = floor(int(coord[0])/10)
+	match side:
+		"left":
+			for i in range(floor*10+1,floor*10+10):
+				if valid_map([str(i), coord[1]]):
+					return [str(i), coord[1]]
+		"right":
+			for i in range(floor*10+9, floor*10, -1):
+				if valid_map([str(i), coord[1]]):
+					return [str(i), coord[1]]
+		"top":
+			for i in range(1,10):
+				print(coord[0], " ", str(i))
+				if valid_map([coord[0], str(i)]):
+					return [coord[0], str(i)]
+		"bot":
+			for i in range(9, 0, -1):
+				if valid_map([coord[0], str(i)]):
+					return [coord[0], str(i)]
