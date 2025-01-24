@@ -184,9 +184,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_73bq0"]
-radius = 4.5
-height = 9.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_rs5xd"]
+radius = 4.52769
 
 [node name="Clone" type="CharacterBody2D"]
 z_index = 1
@@ -205,5 +204,4 @@ animation = &"face_idle"
 autoplay = "face_idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 19.5)
-shape = SubResource("CapsuleShape2D_73bq0")
+shape = SubResource("CircleShape2D_rs5xd")

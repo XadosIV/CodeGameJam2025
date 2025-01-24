@@ -28,7 +28,16 @@ animations = [{
 size = Vector2(32, 32)
 
 [node name="Pressure_Plate" type="Area2D"]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_tvdgn")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+z_index = 1
+blend_mode = 2
+shadow_enabled = true
+texture = ExtResource("4_6atuc")
+texture_scale = 0.1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 z_index = 1

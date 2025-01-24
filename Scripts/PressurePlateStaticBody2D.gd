@@ -22,17 +22,17 @@ func _ready() -> void:
 	on_plate_release.connect(_on_plate_release)
 
 func _on_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
+	print("enter")
 	if not allowed_bodies.has(body.name):
 		return
 	is_pushed = true
-	bodies.append(body)
+	bodies.append(body_rid.get_id())
 	on_plate_push.emit()
 
 func _on_body_shape_exited(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	if not allowed_bodies.has(body.name):
+	if not bodies.has(body_rid.get_id()):
 		return
-		
-	bodies.erase(body)
+	bodies.erase(body_rid.get_id())
 	if bodies.size() == 0:
 		is_pushed = false
 		on_plate_release.emit()
