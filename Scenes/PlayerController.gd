@@ -1,9 +1,5 @@
 extends CharacterBody2D
 
-const BACK = ["back_idle", "back_walk"]
-const FACE = ["face_idle", "face_walk"]
-const SIDE = ["side_idle", "side_walk"]
-
 @onready var animator = $AnimatedSprite2D
 
 @export var speed: float = 300
@@ -31,25 +27,26 @@ func _physics_process(delta: float) -> void:
 
 	# Si on n'est pas en mouvement, rester dans l'animation idle correspondant à la dernière direction
 	if direction == Vector2.ZERO:
-		animator.play(current_animation)  # Garde l'animation idle correspondante
+		play_animation(current_animation, direction)  # Garde l'animation idle correspondante
 
 func update_animation(direction: Vector2) -> void:
 	if direction.y < 0:
-		play_animation(BACK, direction)
+		play_animation("back", direction)
 	elif direction.y > 0:
 		if direction.x != 0:
-			play_animation(SIDE, direction)
+			play_animation("side", direction)
 		else:
-			play_animation(FACE, direction)
+			play_animation("face", direction)
 	elif direction.x != 0:
-		play_animation(SIDE, direction)
-	else:
-		play_animation(FACE, direction)
+		play_animation("side", direction)
 
-func play_animation(animation_set: Array, direction: Vector2) -> void:
-	animator.flip_h = direction.x < 0
-
+func play_animation(anim: String, direction: Vector2) -> void:
+	if direction.x < 0:
+		animator.flip_h = true
+	elif direction.x > 0:
+		animator.flip_h = false
+	current_animation = anim
 	if direction == Vector2.ZERO:
-		animator.play(animation_set[0])
+		animator.play(anim+"_idle")
 	else:
-		animator.play(animation_set[1])
+		animator.play(anim+"_walk")
