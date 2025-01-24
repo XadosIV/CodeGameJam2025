@@ -7,17 +7,15 @@ var musics_loaded: Array[AudioStream] = []
 
 var global_volume: float = 1.0  # Volume global, 1.0 = 100%, 0.5 = 50%, etc.
 
-func _ready() -> void:
+var fading_music: bool
+var fading_sound: bool
+
+func _ready() -> void:		
 	search_all_files("res://Audio")
 	print("Musics: ", musics)
 	print("Sounds: ", sounds)
 	
 	load_all_audios()
-	
-	set_music_volume_percentage(1.0)
-	play_music(6)
-	set_sound_volume_percentage(1.0)
-	play_sound(0)
 
 func play_music(index: int):
 	if index >= 0 and index < musics_loaded.size():
@@ -69,6 +67,15 @@ func percentage_to_db(percentage: float) -> float:
 		return -80.0  # Volume minimal
 	return 20 * (log(percentage) / log(10))
 
+func fade_music():
+	fading_music = true
+		
+func music_mixer(volume:int):
+	$Music.set_volume_db(volume)
+	
+func sound_mixer(volume:int):
+	$Sound.set_volume_db(volume)
+	
 func pause_sound():
 	$Sound.set_stream_paused(!$Sound.get_stream_paused())
 
@@ -116,3 +123,12 @@ func load_all_audios():
 		musics_loaded.append(load(music))
 	for sound in sounds:
 		sounds_loaded.append(load(sound))
+		
+func _process(delta: float) -> void:
+	if fading_music:
+		$Music.volume_db -= 15*delta
+		
+		if $Music.volume_db <= 0:
+			$Music.stop()
+			$Music.set_volume_db(0)
+			fading_music = false

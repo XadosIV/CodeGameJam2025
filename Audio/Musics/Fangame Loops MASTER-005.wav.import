@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://d1fsmetxnd2l8"
+path="res://.godot/imported/Fangame Loops MASTER-005.wav-94e46bc4feecee061719549a0e033da5.sample"
+
+[deps]
+
+source_file="res://Audio/Musics/Fangame Loops MASTER-005.wav"
+dest_files=["res://.godot/imported/Fangame Loops MASTER-005.wav-94e46bc4feecee061719549a0e033da5.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
