@@ -582,7 +582,6 @@ scale = Vector2(0.212062, 0.212062)
 texture = ExtResource("3_boqh0")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -594,7 +593,7 @@ tile_set = SubResource("TileSet_duxny")
 
 [node name="CharacterBody2D" type="CharacterBody2D" parent="."]
 position = Vector2(142, 44)
-scale = Vector2(3, 3)
+scale = Vector2(2, 2)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
 material = SubResource("CanvasItemMaterial_qhp0h")
@@ -606,6 +605,7 @@ frame_progress = 0.924505
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 1
 position = Vector2(142, 44)
+zoom = Vector2(1.5, 1.5)
 process_callback = 0
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
@@ -619,6 +619,7 @@ position = Vector2(142, 44)
 script = ExtResource("10_2t52h")
 follow_mode = 5
 follow_target = NodePath("../CharacterBody2D")
+zoom = Vector2(1.5, 1.5)
 tween_resource = SubResource("Resource_ghugh")
 
 [node name="CRTLayer" type="CanvasLayer" parent="."]
