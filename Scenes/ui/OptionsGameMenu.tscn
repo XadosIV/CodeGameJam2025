@@ -1,0 +1,139 @@
+[gd_scene load_steps=3 format=3 uid="uid://ba1odrnivdowk"]
+
+[ext_resource type="Script" path="res://ui/options_game_menu_component.gd" id="1_62054"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rb3sh"]
+
+[node name="OptionsGameMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_62054")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.296, 0.296, 0.296, 0.5)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 256
+theme_override_constants/margin_top = 256
+theme_override_constants/margin_right = 256
+theme_override_constants/margin_bottom = 256
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Volumes" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Volumes"]
+layout_mode = 2
+text = "Volume"
+horizontal_alignment = 1
+
+[node name="Global" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Volumes"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Volumes/Global"]
+layout_mode = 2
+text = "Global"
+label_settings = SubResource("LabelSettings_rb3sh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer/Volumes/Global"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="VolumeAmount" type="Label" parent="MarginContainer/VBoxContainer/Volumes/Global"]
+custom_minimum_size = Vector2(24, 16)
+layout_mode = 2
+
+[node name="Music" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Volumes"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Volumes/Music"]
+layout_mode = 2
+text = "Music"
+label_settings = SubResource("LabelSettings_rb3sh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer/Volumes/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="VolumeAmount" type="Label" parent="MarginContainer/VBoxContainer/Volumes/Music"]
+custom_minimum_size = Vector2(24, 16)
+layout_mode = 2
+
+[node name="Sound" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Volumes"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Volumes/Sound"]
+layout_mode = 2
+text = "Sound"
+label_settings = SubResource("LabelSettings_rb3sh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="MarginContainer/VBoxContainer/Volumes/Sound"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.1
+value = 0.5
+
+[node name="VolumeAmount" type="Label" parent="MarginContainer/VBoxContainer/Volumes/Sound"]
+custom_minimum_size = Vector2(24, 16)
+layout_mode = 2
+
+[node name="Fullscreen" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Fullscreen"]
+layout_mode = 2
+text = "FullScreen"
+label_settings = SubResource("LabelSettings_rb3sh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer/Fullscreen"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Back"
+
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volumes/Global/Volume" to="." method="_on_global_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volumes/Music/Volume" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Volumes/Sound/Volume" to="." method="_on_sound_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Fullscreen/CheckButton" to="." method="_on_fullscreen_button_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]

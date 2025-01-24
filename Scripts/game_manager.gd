@@ -10,6 +10,9 @@ var mental_health: float = max_mental
 
 @export var music_key: String = "ui_music"
 
+var memories: Array[bool] = [false, false, false]
+
+var player_pos = Vector2(200,0)
 var enter_side = ""
 var corridor_offset = 0
 var current_animation = "face"
@@ -88,3 +91,9 @@ func find_map(side, coord):
 			for i in range(9, 0, -1):
 				if valid_map([coord[0], str(i)]):
 					return [coord[0], str(i)]
+	
+func collect_memory(id:int):
+	if id >= 0 and id < memories.size():
+		memories[id] = true
+		print("Memory collected:", id)
+		print(memories)
