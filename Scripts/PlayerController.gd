@@ -19,6 +19,7 @@ func _ready():
 	GameManager.mental_health_increase.connect(_on_health_increase)
 	GameManager.mental_health_decrease.connect(_on_health_decrease)
 
+
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	direction = direction.normalized()
@@ -64,10 +65,22 @@ func play_animation(anim: String, direction: Vector2) -> void:
 		animator.play(anim+"_walk")
 
 func update_pos():
-	position = GameManager.player_pos
 	updated = true
 	current_animation = GameManager.current_animation
 	last_direction = GameManager.last_dir
+	var map = get_parent().get_node("MapBorder")
+	if not map.initiated:
+		await get_parent().get_node("MapBorder").tree_entered
+	match GameManager.enter_side:
+		"left":
+			position = Vector2(map.border.position.x + 2, map.left[0]+GameManager.corridor_offset)
+		"right":
+			position = Vector2(map.border.end.x - 2, map.right[0]+GameManager.corridor_offset)
+		"top":
+			position = Vector2(map.top[0]+GameManager.corridor_offset, map.border.position.y + 50)
+		"bot":
+			position = Vector2(map.bot[0] + GameManager.corridor_offset, map.border.end.y - 50)
+	
 
 func _on_draw():
 	if not updated:

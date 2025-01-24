@@ -8,19 +8,29 @@ extends Control
 @onready var music_slider = $MarginContainer/VBoxContainer/Volumes/Music/Volume
 @onready var sfx_slider = $MarginContainer/VBoxContainer/Volumes/Sound/Volume
 
+@onready var fullscreen : CheckButton = $MarginContainer/VBoxContainer/Fullscreen/CheckButton
+
 @export var main_menu: String = "res://Scenes/ui/MainMenu.tscn"
 
 func _ready() -> void:
+	var displayType: int = DisplayServer.mouse_get_mode();
+	var isFullscreen: bool = false
+	if displayType == DisplayServer.WINDOW_MODE_FULLSCREEN:
+		isFullscreen = true
+	elif displayType == DisplayServer.WINDOW_MODE_WINDOWED:
+		isFullscreen = false
+	fullscreen.button_pressed = isFullscreen
+	
 	global_label.text = str(AudioController.global_volume)
 	music_label.text = str(AudioController.get_music_volume())
 	sfx_label.text = str(AudioController.get_sound_volume())
-	
+
 	global_slider.value = AudioController.global_volume
 	music_slider.value = AudioController.get_music_volume()
 	sfx_slider.value = AudioController.get_sound_volume()
 
 func _on_back_pressed() -> void:
-	get_tree().change_scene_to_file(main_menu)
+	visible = false
 
 func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
 	var displayType: int = 0
