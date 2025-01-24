@@ -9,14 +9,11 @@ func _ready() -> void:
 	RewindManager.current_rewind.connect(_on_current_rewind)
 
 func _on_start_rewind() -> void:
-	print("RewindController: start rewind")
 	current_clone = clone_prefab.instantiate()
 	get_tree().current_scene.add_child(current_clone)
 	
 func _on_stop_rewind() -> void:
-	print("RewindController: stop rewind")
 	current_clone.queue_free()
 	
 func _on_current_rewind(position: Vector2) -> void:
-	print("RewindController: current rewind")
 	current_clone.position = position

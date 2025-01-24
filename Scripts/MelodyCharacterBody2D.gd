@@ -114,9 +114,7 @@ func _on_stop_play_box():
 		record_timer.stop()
 	
 func _on_current_record():
-	print("record")
 	RewindManager._append_position(get_global_position())	
 	
-func _on_RecordTimer_timeout():	
-	print("fin des haricots")
+func _on_RecordTimer_timeout():
 	RewindManager._set_is_recording(false)
