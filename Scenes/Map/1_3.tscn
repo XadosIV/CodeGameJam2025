@@ -9,12 +9,12 @@
 size = Vector2(2099.58, 1277.59)
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="RenderCommon" parent="." instance=ExtResource("1_fpkms")]
 
 [node name="Melody" parent="." instance=ExtResource("2_p2ym0")]
 unique_name_in_owner = true
-z_index = 1
 position = Vector2(49, 57)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

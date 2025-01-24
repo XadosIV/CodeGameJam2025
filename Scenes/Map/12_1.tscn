@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://1bo5y8v5i8bv"]
+[gd_scene load_steps=6 format=4 uid="uid://blcewlk34x7n2"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_fxlwp"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_uidbr"]
@@ -9,6 +9,7 @@
 size = Vector2(2699, 1082.5)
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="RenderCommon" parent="." instance=ExtResource("1_fxlwp")]
 

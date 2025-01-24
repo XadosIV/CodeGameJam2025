@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=4 uid="uid://b1bx0b4ic8clx"]
+[gd_scene load_steps=6 format=4 uid="uid://b6m6chgdvw1qa"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_gg50d"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="2_2055y"]
@@ -9,13 +9,13 @@
 size = Vector2(3346.36, 1119.75)
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="RenderCommon" parent="." instance=ExtResource("1_gg50d")]
 
 [node name="Melody" parent="." instance=ExtResource("2_2055y")]
 unique_name_in_owner = true
 visible = false
-z_index = 1
 position = Vector2(49, 57)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

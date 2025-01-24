@@ -9,6 +9,7 @@
 size = Vector2(2699, 1082.5)
 
 [node name="Main" type="Node2D"]
+y_sort_enabled = true
 
 [node name="RenderCommon" parent="." instance=ExtResource("1_7m3uo")]
 
