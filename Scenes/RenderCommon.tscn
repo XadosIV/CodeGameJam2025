@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://bp6wu1nuqae5i"]
+[gd_scene load_steps=13 format=3 uid="uid://bp6wu1nuqae5i"]
 
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="1_lw4wa"]
 [ext_resource type="Script" path="res://Scripts/MentalHealthEffect.gd" id="2_qc6h2"]
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
 [ext_resource type="Material" uid="uid://cgdr4d2hniyr5" path="res://Material/RenderCommon.tres" id="3_rneop"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
-[ext_resource type="Environment" path="res://env.tres" id="6_4oj8h"]
+[ext_resource type="Environment" uid="uid://dj0gto4fslol4" path="res://env.tres" id="6_4oj8h"]
+[ext_resource type="PackedScene" uid="uid://ba1odrnivdowk" path="res://Scenes/ui/OptionsGameMenu.tscn" id="7_pj0qr"]
+[ext_resource type="Script" path="res://Scripts/OptionsMenuOpener.gd" id="7_ubium"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s6s76"]
 shader = ExtResource("1_lw4wa")
@@ -107,3 +109,10 @@ grow_vertical = 2
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("6_4oj8h")
+
+[node name="OptionsMenu" type="CanvasLayer" parent="."]
+script = ExtResource("7_ubium")
+
+[node name="OptionsMenu" parent="OptionsMenu" instance=ExtResource("7_pj0qr")]
+unique_name_in_owner = true
+visible = false

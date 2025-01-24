@@ -14,13 +14,15 @@ func _ready() -> void:
 	global_label.text = str(AudioController.global_volume)
 	music_label.text = str(AudioController.get_music_volume())
 	sfx_label.text = str(AudioController.get_sound_volume())
-	
+
 	global_slider.value = AudioController.global_volume
 	music_slider.value = AudioController.get_music_volume()
 	sfx_slider.value = AudioController.get_sound_volume()
 
 func _on_back_pressed() -> void:
 	visible = false
+
+
 
 func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
 	var displayType: int = 0
