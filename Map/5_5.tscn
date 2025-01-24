@@ -645,6 +645,7 @@ texture_filter = 3
 position = Vector2(0, 22.5)
 scale = Vector2(0.106031, 0.106031)
 texture = ExtResource("9_a7o5r")
+texture_scale = 2.27
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Melody"]
 position = Vector2(-0.5, 4.5)

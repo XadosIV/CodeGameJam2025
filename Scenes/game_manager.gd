@@ -4,11 +4,21 @@ var player_pos = Vector2(500,0)
 var current_animation = "face"
 var last_dir = Vector2.ZERO
 
+var is_playing = false
+
+var mental_health = 2000
+
 func _ready():
 	pass
 
 func _process(delta):
-	pass
+	if not is_playing:
+		mental_health -= 1
+	else:
+		if mental_health > 2000:
+			mental_health = 2000
+		else:
+			mental_health += 5
 
 func change_scene():
 	var name = get_tree().current_scene.scene_file_path
