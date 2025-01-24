@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="CodeGameJam"
-run/main_scene="res://Scenes/main.tscn"
+run/main_scene="res://Map/00.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,10 +19,11 @@ config/icon="res://icon.svg"
 
 AudioController="*res://Audio/audio_controller.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+GameManager="*res://Scenes/game_manager.gd"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray()
 
 [physics]
 
