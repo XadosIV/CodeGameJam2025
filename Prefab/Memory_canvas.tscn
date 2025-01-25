@@ -1,0 +1,153 @@
+[gd_scene load_steps=16 format=3 uid="uid://b7tbclnn46us8"]
+
+[ext_resource type="Script" path="res://Scripts/MemoryController.gd" id="1_m1358"]
+[ext_resource type="Texture2D" uid="uid://dkxkutdy3faft" path="res://Sprites/story/m1_1.png" id="1_tt22v"]
+[ext_resource type="Texture2D" uid="uid://b83gtra4ld0j3" path="res://Sprites/story/m1_2.png" id="2_f4n3k"]
+[ext_resource type="Texture2D" uid="uid://cu003j0sm2025" path="res://Sprites/story/m1_3.png" id="3_e1w7i"]
+[ext_resource type="Texture2D" uid="uid://b3544ny2bwlxm" path="res://Sprites/story/m2_1.png" id="4_ms5jm"]
+[ext_resource type="Texture2D" uid="uid://brlv7mx0pybv" path="res://Sprites/story/m2_2.png" id="5_0wl01"]
+[ext_resource type="Texture2D" uid="uid://b7hgvb1sqd7je" path="res://Sprites/story/m2_3.png" id="6_3mvlm"]
+[ext_resource type="Texture2D" uid="uid://cn44lcv55mctu" path="res://Sprites/story/m3_1.png" id="7_3kvss"]
+[ext_resource type="Texture2D" uid="uid://cag3eguaw28sq" path="res://Sprites/story/m3_2.png" id="8_73hxe"]
+[ext_resource type="Texture2D" uid="uid://wty5jqnchr6e" path="res://Sprites/story/m3_3.png" id="9_qu672"]
+
+[sub_resource type="Animation" id="Animation_t233h"]
+resource_name = "memory_1"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("1_tt22v"), ExtResource("2_f4n3k"), ExtResource("3_e1w7i")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 4.96667, 6, 7, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ug1ga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nxhtf"]
+resource_name = "memory_2"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_ms5jm"), ExtResource("5_0wl01"), ExtResource("6_3mvlm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.04106, 2.04106, 3, 4.04106, 5.04106, 6, 7.04106, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_16r7q"]
+resource_name = "memory_3"
+length = 9.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 6),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [ExtResource("7_3kvss"), ExtResource("8_73hxe"), ExtResource("9_qu672")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v20vf"]
+_data = {
+"RESET": SubResource("Animation_ug1ga"),
+"memory_1": SubResource("Animation_t233h"),
+"memory_2": SubResource("Animation_nxhtf"),
+"memory_3": SubResource("Animation_16r7q")
+}
+
+[node name="MemoryCanvas" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m1358")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_v20vf")
+}

@@ -11,6 +11,8 @@ signal stop_rewind_box
 
 signal game_over
 
+signal memory_collected(id: int)
+
 @export var max_mental: float = 30
 @export var decrease_rate: float = 1
 @export var increase_rate: float = 5
@@ -27,6 +29,8 @@ var memories: Array[bool] = [false, false, false]
 var is_playing_box: bool = false
 var is_rewind_box: bool = false
 
+var is_playing_memory: bool = false
+
 var mainMenu: String = "res://Scenes/ui/MainMenu.tscn"
 
 @onready var current_scene: Node = get_tree().current_scene
@@ -34,13 +38,15 @@ var mainMenu: String = "res://Scenes/ui/MainMenu.tscn"
 func _ready() -> void:
 	game_over.connect(_on_game_over)
 
-func _process(delta):
+func _process(delta) -> void:
+	if is_playing_memory: 
+		return
+	
 	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
 		if mental_health <= 0:
 			game_over.emit()	
-		mental_health_decrease.emit(mental_health)	
-			
+		mental_health_decrease.emit(mental_health)
 	else:
 		if mental_health > max_mental:
 			mental_health = max_mental
@@ -102,6 +108,7 @@ func find_map(side, coord):
 func collect_memory(id:int):
 	if id >= 0 and id < memories.size():
 		memories[id] = true
+		memory_collected.emit(id)
 		get_tree().current_scene.get_node("RenderCommon/TilemapController").update_tilemap()
 	
 func _set_is_play_box(value: bool) -> void:
