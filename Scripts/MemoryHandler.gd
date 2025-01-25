@@ -15,7 +15,6 @@ func _on_body_entered(body: Node) -> void:
 	if body == player:
 		emit_signal("player_entered")
 		animator.play("disable")
-		print("enter")
 		GameManager.collect_memory(memory_id)
 		_disable_interaction()
 

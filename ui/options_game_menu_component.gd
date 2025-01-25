@@ -21,13 +21,13 @@ func _ready() -> void:
 		isFullscreen = false
 	fullscreen.button_pressed = isFullscreen
 	
-	global_label.text = str(AudioController.global_volume)
-	music_label.text = str(AudioController.get_music_volume())
-	sfx_label.text = str(AudioController.get_sound_volume())
+	global_label.text = str(AudioController.get_global_volume_percentage())
+	music_label.text = str(AudioController.get_music_volume_percentage())
+	sfx_label.text = str(AudioController.get_sound_volume_percentage())
 
-	global_slider.value = AudioController.global_volume
-	music_slider.value = AudioController.get_music_volume()
-	sfx_slider.value = AudioController.get_sound_volume()
+	global_slider.value = AudioController.get_global_volume_percentage()
+	music_slider.value = AudioController.get_music_volume_percentage()
+	sfx_slider.value = AudioController.get_sound_volume_percentage()
 
 func _on_back_pressed() -> void:
 	visible = false
@@ -42,7 +42,7 @@ func _on_fullscreen_button_toggled(toggled_on: bool) -> void:
 
 
 func _on_global_value_changed(value: float) -> void:
-	AudioController.global_volume = value
+	AudioController.set_global_volume_percentage(value)
 	global_label.text = str(value)
 
 

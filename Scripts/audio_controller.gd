@@ -1,134 +1,152 @@
 extends Node2D
 
-var sounds: Array[String] = []
-var sounds_loaded: Array[AudioStream] = []
-var musics: Array[String] = []
-var musics_loaded: Array[AudioStream] = []
+@export var audio_folder: String = "res://Audio"
+var global_volume: float = 1.0  # Volume global (0.0 - 1.0)
 
-var global_volume: float = 1.0  # Volume global, 1.0 = 100%, 0.5 = 50%, etc.
+# Internes
+var _sounds: Array[AudioStream] = []
+var _musics: Array[AudioStream] = []
+var _current_music: int = -1
+var _is_fading_out: bool = false
 
-var fading_music: bool
-var fading_sound: bool
+func _ready() -> void:
+	_load_audio_files(audio_folder)
+	print("Loaded musics: ", _musics.size())
+	print("Loaded sounds: ", _sounds.size())
 
-func _ready() -> void:		
-	search_all_files("res://Audio")
-	print("Musics: ", musics)
-	print("Sounds: ", sounds)
-	
-	load_all_audios()
+# --- Gestion des volumes ---
 
-func play_music(index: int):
-	if index >= 0 and index < musics_loaded.size():
-		$Music.stream = musics_loaded[index]
+func get_global_volume_percentage() -> float:
+	return global_volume
+
+func set_global_volume_percentage(value: float) -> void:
+	global_volume = clamp(value, 0.0, 1.0)
+	_update_volume()
+
+func get_music_volume_percentage() -> float:
+	var db = $Music.volume_db
+	return db_to_percentage(db)
+
+func set_music_volume_percentage(percentage: float) -> void:
+	percentage = clamp(percentage, 0.0, 1.0)
+	$Music.volume_db = percentage_to_db(percentage)
+
+func get_sound_volume_percentage() -> float:
+	var db = $Sound.volume_db
+	return db_to_percentage(db)
+
+func set_sound_volume_percentage(percentage: float) -> void:
+	percentage = clamp(percentage, 0.0, 1.0)
+	$Sound.volume_db = percentage_to_db(percentage)
+
+# --- Contrôle des musiques ---
+
+func play_music(index: int, fade_in: bool = false) -> void:
+	if index < 0 or index >= _musics.size():
+		print("Invalid music index.")
+		return
+	_current_music = index
+	$Music.stream = _musics[index]
+	$Music.volume_db = percentage_to_db(global_volume)
+	if fade_in:
+		$Music.volume_db = -80  # Commencer à un volume bas
+		$Music.play()
+		_fade_in_music()
+	else:
 		$Music.play()
 
-func play_sound(index: int):
-	if index >= 0 and index < sounds_loaded.size():
-		$Sound.stream = sounds_loaded[index]
-		$Sound.play()
-		
-func set_music_volume(volume: int):
-	$Music.set_volume_db(volume * global_volume)
+func stop_music(fade_out: bool = false) -> void:
+	if fade_out:
+		_fade_out_music()
+	else:
+		$Music.stop()
 
-func set_sound_volume(volume: int):
-	$Sound.set_volume_db(volume * global_volume)
+# --- Contrôle des sons ---
 
-func set_music_volume_percentage(percentage: float):
-	# Définit le volume de la musique en pourcentage (0.0 - 1.0)
-	percentage = clamp(percentage, 0.0, 1.0)
-	var db = percentage_to_db(percentage)
-	set_music_volume(db)
+func play_sound(index: int) -> void:
+	if index < 0 or index >= _sounds.size():
+		print("Invalid sound index.")
+		return
+	$Sound.stream = _sounds[index]
+	$Sound.volume_db = percentage_to_db(global_volume)
+	$Sound.play()
 
-func set_sound_volume_percentage(percentage: float):
-	# Définit le volume du son en pourcentage (0.0 - 1.0)
-	percentage = clamp(percentage, 0.0, 1.0)
-	var db = percentage_to_db(percentage)
-	set_sound_volume(db)
+func stop_sound():
+	$Sound.stop()
 
-func get_music_volume() -> float:
-	# Retourne le volume de la musique en pourcentage (0.0 - 1.0)
-	var db = $Music.get_volume_db()
-	return db_to_percentage(db)
+# --- Gestion des transitions (fade) ---
 
-func get_sound_volume() -> float:
-	# Retourne le volume du son en pourcentage (0.0 - 1.0)
-	var db = $Sound.get_volume_db()
-	return db_to_percentage(db)
+func _fade_in_music(duration: float = 1.0) -> void:
+	var target_volume: float = percentage_to_db(global_volume)
+	$Music.volume_db = -80
+	await _animate_volume($Music, -80, target_volume, duration)
+
+func _fade_out_music(duration: float = 1.0) -> void:
+	_is_fading_out = true
+	var start_volume: float = $Music.volume_db
+	await _animate_volume($Music, start_volume, -80, duration)
+	$Music.stop()
+	_is_fading_out = false
+
+func _animate_volume(player: AudioStreamPlayer, start_db: float, end_db: float, duration: float) -> void:
+	var timer = Timer.new()
+	timer.wait_time = 0.016  # Approximativement 60 FPS (16ms par frame)
+	timer.one_shot = false
+	add_child(timer)
+	timer.start()
+
+	var elapsed_time: float = 0.0
+	while elapsed_time < duration and not _is_fading_out:
+		await timer.timeout  # Utilisation d'await avec timeout
+		elapsed_time += timer.wait_time
+		var t: float = elapsed_time / duration
+		player.volume_db = lerp(start_db, end_db, t)
+
+	timer.stop()
+	timer.queue_free()
+
+# --- Utilitaires de volume ---
 
 func db_to_percentage(db: float) -> float:
-	# Convertit un volume en décibels (dB) en une valeur entre 0.0 et 1.0
 	if db <= -80.0:
 		return 0.0
 	return pow(10, db / 20)
 
 func percentage_to_db(percentage: float) -> float:
-	# Convertit une valeur entre 0.0 et 1.0 en décibels (dB)
 	if percentage <= 0.0:
 		return -80.0  # Volume minimal
-	return 20 * (log(percentage) / log(10))
+	return 20 * log(percentage) / log(10)
 
-func fade_music():
-	fading_music = true
-		
-func music_mixer(volume:int):
-	$Music.set_volume_db(volume)
-	
-func sound_mixer(volume:int):
-	$Sound.set_volume_db(volume)
-	
-func pause_sound():
-	$Sound.set_stream_paused(!$Sound.get_stream_paused())
+func _update_volume() -> void:
+	$Music.volume_db = percentage_to_db(global_volume)
+	$Sound.volume_db = percentage_to_db(global_volume)
 
-func pause_music():
-	$Music.set_stream_paused(!$Music.get_stream_paused())
+# --- Chargement des fichiers audios ---
 
-func play_music2D():
-	$Music2D.play()
+func _load_audio_files(base_path: String) -> void:
+	var music_path: String = base_path + "/Musics"
+	var sound_path: String = base_path + "/Sounds"
 
-func play_sound2D():
-	$Sound2D.play()
+	_load_audio_from_directory(music_path, _musics)
+	_load_audio_from_directory(sound_path, _sounds)
 
-func set_global_volume(value: float):
-	global_volume = clamp(value, 0.0, 1.0)  # Le volume global doit être entre 0 et 1
-	set_music_volume($Music.get_volume_db())
-	set_sound_volume($Sound.get_volume_db())
-
-func search_all_files(base_path: String):
-	var dir = DirAccess.open(base_path)
+func _load_audio_from_directory(directory_path: String, target_array: Array[AudioStream]) -> void:
+	var dir: DirAccess = DirAccess.open(directory_path)
 	if !dir:
-		print("Path not found")
+		print("Invalid folder path: ", directory_path)
 		return
-	
+
 	dir.list_dir_begin()
 	while true:
-		var file_name = dir.get_next()
-		
+		var file_name: String = dir.get_next()
 		if file_name == "":
 			break
-			
 		if file_name == "." or file_name == "..":
 			continue
-		
-		if dir.current_is_dir():
-			search_all_files(base_path + "/" + file_name)
-		else:
-			if file_name.ends_with(".wav"):
-				musics.append(base_path + "/" + file_name)
-			elif file_name.ends_with(".mp3"):
-				sounds.append(base_path + "/" + file_name)
+		var file_path: String = directory_path + "/" + file_name
+		if not dir.current_is_dir():
+			if file_name.ends_with(".mp3") or file_name.ends_with(".wav"):
+				var stream: AudioStream = load(file_path) as AudioStream
+				if stream:
+					target_array.append(stream)
 	dir.list_dir_end()
-
-func load_all_audios():
-	for music in musics:
-		musics_loaded.append(load(music))
-	for sound in sounds:
-		sounds_loaded.append(load(sound))
-		
-func _process(delta: float) -> void:
-	if fading_music:
-		$Music.volume_db -= 15*delta
-		
-		if $Music.volume_db <= 0:
-			$Music.stop()
-			$Music.set_volume_db(0)
-			fading_music = false

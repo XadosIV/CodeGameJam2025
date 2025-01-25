@@ -8,7 +8,12 @@ var switch
 var limit = rng.randi_range(10,20)
 
 func _ready():
-	var ppos = get_tree().current_scene.get_node("Melody").position
+	var melody: Node = get_tree().current_scene.get_node("Melody")
+	if melody == null:
+		queue_free()
+		return
+	
+	var ppos = melody.position
 	
 	position = Vector2(rng.randi_range(ppos.x-500, ppos.x+500), rng.randi_range(ppos.y-500, ppos.y+500))
 	
