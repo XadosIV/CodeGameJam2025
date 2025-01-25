@@ -1,4 +1,4 @@
-extends Area2D
+class_name PressurePlateStaticBody2D extends Area2D
 
 signal on_plate_push
 signal on_plate_release

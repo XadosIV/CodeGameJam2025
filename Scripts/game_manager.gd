@@ -25,6 +25,7 @@ var current_animation: String = "face"
 var last_dir: Vector2 = Vector2.ZERO
 
 var memories: Array[bool] = [false, false, false]
+var plateEnigme: Dictionary = {}
 
 var is_playing_box: bool = false
 var is_rewind_box: bool = false
