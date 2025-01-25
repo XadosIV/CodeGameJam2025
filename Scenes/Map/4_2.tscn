@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=4 uid="uid://cpnnpl3m2tkcs"]
+
+[ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_mox0v"]
+[ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_o1ede"]
+[ext_resource type="Script" path="res://Scripts/warper.gd" id="3_hu0ru"]
+[ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="4_is6pk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
+size = Vector2(215, 849.25)
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+
+[node name="RenderCommon" parent="." instance=ExtResource("1_mox0v")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAAAP//AAACAAEAAAAAAP7/AAACAAEAAAAAAP3/AAACAAEAAAAAAPz/AAACAAEAAAAAAPv/AAACAAEAAAAAAPr/AAACAAEAAAAAAPn/AAACAAEAAAAAAPj/AAACAAEAAAAAAPf/AAACAAEAAAAAAPb/AAACAAEAAAAAAPX/AAACAAEAAAAAAPT/AAACAAEAAAAAAPP/AAACAAEAAAAAAPL/AAACAAEAAAAAAPH/AAACAAEAAAAAAPD/AAACAAEAAAAAAO//AAACAAEAAAD/////AAAAAAEAAAD///7/AAAAAAEAAAD///3/AAAAAAEAAAD///z/AAAAAAEAAAD///v/AAAAAAEAAAD///r/AAAAAAEAAAD///n/AAAAAAEAAAD///j/AAAAAAEAAAD///f/AAAAAAEAAAD///b/AAAAAAEAAAD///X/AAAAAAEAAAD///T/AAAAAAEAAAD///P/AAAAAAEAAAD///L/AAAAAAEAAAD///H/AAAAAAEAAAD///D/AAAAAAEAAAD//+//AAAAAAEAAAAAAO7/AAACAAEAAAAAAO3/AAACAAEAAAAAAOz/AAACAAEAAAAAAOv/AAACAAEAAAAAAOr/AAACAAEAAAAAAOn/AAACAAEAAAAAAOj/AAACAAAAAAD//+7/AAAAAAEAAAD//+3/AAAAAAEAAAD//+z/AAAAAAEAAAD//+v/AAAAAAEAAAD//+r/AAAAAAEAAAD//+n/AAAAAAEAAAD//+j/AAAAAAAAAAAAAA8AAAACAAIAAAAAAA4AAAACAAEAAAAAAA0AAAACAAEAAAAAAAwAAAACAAEAAAAAAAsAAAACAAEAAAAAAAoAAAACAAEAAAAAAAkAAAACAAEAAAAAAAgAAAACAAEAAAAAAAcAAAACAAEAAAAAAAYAAAACAAEAAAAAAAUAAAACAAEAAAAAAAQAAAACAAEAAAAAAAMAAAACAAEAAAAAAAIAAAACAAEAAAAAAAEAAAACAAEAAAAAAAAAAAACAAEAAAD//w8AAAAAAAIAAAD//w4AAAAAAAEAAAD//w0AAAAAAAEAAAD//wwAAAAAAAEAAAD//wsAAAAAAAEAAAD//woAAAAAAAEAAAD//wkAAAAAAAEAAAD//wgAAAAAAAEAAAD//wcAAAAAAAEAAAD//wYAAAAAAAEAAAD//wUAAAAAAAEAAAD//wQAAAAAAAEAAAD//wMAAAAAAAEAAAD//wIAAAAAAAEAAAD//wEAAAAAAAEAAAD//wAAAAAAAAEAAAA=")
+tile_set = ExtResource("2_o1ede")
+
+[node name="MapBorder" type="Area2D" parent="."]
+script = ExtResource("3_hu0ru")
+
+[node name="Shape" type="CollisionShape2D" parent="MapBorder"]
+position = Vector2(0.5, -116.625)
+shape = SubResource("RectangleShape2D_0bsht")
+
+[node name="Melody" parent="." instance=ExtResource("4_is6pk")]
+unique_name_in_owner = true
+position = Vector2(-186, 21)
+
+[connection signal="body_exited" from="MapBorder" to="MapBorder" method="_on_body_exited"]
