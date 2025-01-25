@@ -1,10 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://dflgcliakpy00"]
+[gd_scene load_steps=9 format=4 uid="uid://dxgm8q5n2iae8"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_edgi4"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_n8bcx"]
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_xa5s3"]
+[ext_resource type="PackedScene" uid="uid://4lq63lomhgkj" path="res://Prefab/Tilemaps/key_1.tscn" id="4_dffqe"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_j0bd7"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="5_dj0pl"]
+[ext_resource type="PackedScene" uid="uid://b526c8qw8uhwe" path="res://Prefab/Tilemaps/key_2.tscn" id="5_wtymg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
 size = Vector2(1369.22, 886.375)
@@ -24,6 +26,12 @@ y_sort_enabled = true
 position = Vector2(0, -1)
 scale = Vector2(1.5, 1.5)
 tile_set = ExtResource("3_xa5s3")
+
+[node name="Key1" parent="." instance=ExtResource("4_dffqe")]
+tile_map_data = PackedByteArray("AAAAAPL/AAACAAIAAAAAAPH/AAACAAEAAAAAAPD/AAACAAEAAAAAAO//AAACAAEAAAAAAO7/AAACAAEAAAAAAO3/AAACAAEAAAAAAOz/AAACAAEAAAAAAOv/AAACAAAAAAD///L/AAAAAAIAAAD///H/AAAAAAEAAAD///D/AAAAAAEAAAD//+//AAAAAAEAAAD//+7/AAAAAAEAAAD//+3/AAAAAAEAAAD//+z/AAAAAAEAAAD//+v/AAAAAAAAAAA=")
+
+[node name="Key2" parent="." instance=ExtResource("5_wtymg")]
+tile_map_data = PackedByteArray("AADu/wAAAAACAAIAAADu////AAACAAAAAADt/wAAAAABAAIAAADt////AAABAAAAAADs/wAAAAABAAIAAADs////AAABAAAAAADr/wAAAAABAAIAAADr////AAABAAAAAADq/wAAAAABAAIAAADq////AAABAAAAAADp/wAAAAABAAIAAADp////AAABAAAAAADo/wAAAAABAAIAAADo////AAABAAAAAADn/wAAAAABAAIAAADn////AAABAAAAAADm/wAAAAAAAAIAAADm////AAAAAAAAAAA=")
 
 [node name="MapBorder" type="Area2D" parent="."]
 script = ExtResource("4_j0bd7")
