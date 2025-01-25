@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_h58jt"]
 [ext_resource type="PackedScene" uid="uid://4lq63lomhgkj" path="res://Prefab/Tilemaps/key_1.tscn" id="4_sulmq"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_tqif8"]
-[ext_resource type="PackedScene" uid="uid://b526c8qw8uhwe" path="res://Prefab/Tilemaps/key_2.tscn" id="5_q5t85"]
+[ext_resource type="PackedScene" path="res://Prefab/Tilemaps/key_2.tscn" id="5_q5t85"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="5_yowau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
@@ -25,6 +25,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -1)
 scale = Vector2(1.5, 1.5)
+tile_map_data = PackedByteArray("AADd//3/AAACACoAAADm//3/AAACACoAAADU//3/AAACACoAAAD6//3/AAACACoAAAAEAP3/AAACACoAAAAOAP3/AAACACoAAAAbAP3/AAACACoAAAAmAP3/AAACACoAAADz//v/AgACABQAAADv//v/AgAAABQAAAA=")
 tile_set = ExtResource("3_h58jt")
 
 [node name="Key1" parent="." instance=ExtResource("4_sulmq")]
