@@ -14,6 +14,9 @@ var rewind_key: String = "ui_rewind"
 
 var updated: bool = false
 
+var is_playing = false
+var counter = 0
+
 func _enter_tree():
 	if not updated:
 		update_pos()
@@ -28,6 +31,9 @@ func _ready():
 	record_timer.one_shot = true
 	record_timer.timeout.connect(_on_RecordTimer_timeout)
 
+func _process(delta):
+	if is_playing:
+		counter+=delta
 
 func _physics_process(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -108,13 +114,17 @@ func _on_draw():
 func _on_start_play_box():
 	particle.emitting = true
 	record_timer.start()
-	AudioController.play_music(0, true)
+	is_playing = true
+	if counter > 134:
+		counter = 0
+	AudioController.play_music(0, true, counter)
 	
 func _on_stop_play_box():
 	particle.emitting = false	
 	if(not record_timer.is_stopped()):
 		record_timer.stop()
-	AudioController.stop_music(true)
+	is_playing = false
+	AudioController.stop_music(true, true)
 	
 func _on_current_record():
 	RewindManager._append_position(get_global_position())	

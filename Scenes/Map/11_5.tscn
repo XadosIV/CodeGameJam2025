@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://drbpr2ouqip6m"]
+[gd_scene load_steps=8 format=4 uid="uid://drbpr2ouqip6m"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_7m3uo"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_jtij1"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="3_6qynw"]
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_nq0wi"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="4_ppe80"]
+[ext_resource type="PackedScene" uid="uid://cs3g4hxpgqrbl" path="res://Prefab/memory.tscn" id="6_01a48"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
 size = Vector2(1340, 1522)
@@ -23,7 +24,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -1)
 scale = Vector2(2, 2)
-tile_map_data = PackedByteArray("AADu/+7/AAAEADcAAADy/+7/AAAEADcAAADv//H/AAAEABIAAADx////AAAGABQAAADy//3/AAAEABIAAADw//7/AAAEABIAAADx//3/AAAGABQAAAAOAO//AQABAEoAAAALAO7/AQAaAC4AAAAPAO7/AQAaAC4AAAALAP3/AAACACIAAAAFAP3/AAACACIAAAAFAPz/AAAOABkAAAALAPz/AAAOABkAAAALAP7/AAAUABoAAAAFAP7/AAAUABoAAADz//7/AAAGABQAAAD0////AAAGABQAAAD0//3/AAAGABQAAADw/wAAAAAGABQAAADu//7/AAAGABQAAADv//z/AAAGABQAAAAHAO7/AAAGAAwAAAAIAPD/AQAcAFMAAAD1/+//AgAeAAQAAAD5/+//AgAeAAQAAAAHAPD/AQAUABAAAAD3/+z/AAAAAE4AAADv/wkAAAAAAFUAAADw/woAAAAAAFUAAADx/wkAAAAAAFUAAADy/wsAAAAAAFUAAADv/wsAAAAAAFUAAADw/wwAAAAAAFUAAADy/wwAAAAAAFUAAADy/woAAAAAAFUAAAD//+3/AAAOAGIAAAAOAAkAAAAEAHgAAAA=")
+tile_map_data = PackedByteArray("AADu/+7/AAAEADcAAADy/+7/AAAEADcAAADv//H/AAAEABIAAADx////AAAGABQAAADy//3/AAAEABIAAADw//7/AAAEABIAAADx//3/AAAGABQAAAAOAO//AQABAEoAAAALAO7/AQAaAC4AAAAPAO7/AQAaAC4AAAALAP3/AAACACIAAAAFAP3/AAACACIAAAAFAPz/AAAOABkAAAALAPz/AAAOABkAAAALAP7/AAAUABoAAAAFAP7/AAAUABoAAADz//7/AAAGABQAAAD0////AAAGABQAAAD0//3/AAAGABQAAADw/wAAAAAGABQAAADu//7/AAAGABQAAADv//z/AAAGABQAAAAHAO7/AAAGAAwAAAAIAPD/AQAcAFMAAAD1/+//AgAeAAQAAAD5/+//AgAeAAQAAAAHAPD/AQAUABAAAAD3/+z/AAAAAE4AAADv/wkAAAAAAFUAAADw/woAAAAAAFUAAADx/wkAAAAAAFUAAADy/wsAAAAAAFUAAADv/wsAAAAAAFUAAADw/wwAAAAAAFUAAADy/wwAAAAAAFUAAADy/woAAAAAAFUAAAA=")
 tile_set = ExtResource("3_nq0wi")
 
 [node name="MapBorder" type="Area2D" parent="."]
@@ -34,5 +35,9 @@ shape = SubResource("RectangleShape2D_0bsht")
 
 [node name="Melody" parent="." instance=ExtResource("4_ppe80")]
 unique_name_in_owner = true
+
+[node name="Memory" parent="." instance=ExtResource("6_01a48")]
+z_index = 1
+position = Vector2(-543, -367)
 
 [connection signal="body_exited" from="MapBorder" to="MapBorder" method="_on_body_exited"]
