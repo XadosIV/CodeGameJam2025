@@ -41,7 +41,7 @@ func set_sound_volume_percentage(percentage: float) -> void:
 
 # --- Contrôle des musiques ---
 
-func play_music(index: int, fade_in: bool = false) -> void:
+func play_music(index: int, fade_in: bool = false, time:float=0.0) -> void:
 	if index < 0 or index >= _musics.size():
 		print("Invalid music index.")
 		return
@@ -50,12 +50,12 @@ func play_music(index: int, fade_in: bool = false) -> void:
 	$Music.volume_db = percentage_to_db(global_volume)
 	if fade_in:
 		$Music.volume_db = -80  # Commencer à un volume bas
-		$Music.play()
+		$Music.play(time)
 		_fade_in_music()
 	else:
-		$Music.play()
+		$Music.play(time)
 
-func stop_music(fade_out: bool = false) -> void:
+func stop_music(fade_out: bool = false, save: bool = false) -> void:
 	if fade_out:
 		_fade_out_music()
 	else:
@@ -133,7 +133,6 @@ func _load_audio_files(base_path: String) -> void:
 func _load_audio_from_directory(directory_path: String, target_array: Array[AudioStream]) -> void:
 	var dir: DirAccess = DirAccess.open(directory_path)
 	if !dir:
-		print("Invalid folder path: ", directory_path)
 		return
 
 	dir.list_dir_begin()
