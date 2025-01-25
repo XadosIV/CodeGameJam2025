@@ -30,7 +30,6 @@ tile_set = ExtResource("3_88aap")
 script = ExtResource("3_67ef6")
 
 [node name="Shape" type="CollisionShape2D" parent="MapBorder"]
-position = Vector2(0, 12)
 shape = SubResource("RectangleShape2D_0bsht")
 
 [node name="Melody" parent="." instance=ExtResource("4_7nurp")]

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="4_trpgl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
-size = Vector2(1882.5, 835)
+size = Vector2(2407, 835)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -30,7 +30,6 @@ tile_set = ExtResource("3_c34ut")
 script = ExtResource("3_xn2d3")
 
 [node name="Shape" type="CollisionShape2D" parent="MapBorder"]
-position = Vector2(-408.25, 17.5)
 shape = SubResource("RectangleShape2D_0bsht")
 
 [node name="Melody" parent="." instance=ExtResource("4_trpgl")]

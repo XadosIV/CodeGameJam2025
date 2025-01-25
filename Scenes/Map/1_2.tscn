@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_m4eo6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
-size = Vector2(2507.58, 1380.83)
+size = Vector2(3356.87, 1515.72)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -34,7 +34,6 @@ tile_set = ExtResource("4_40djy")
 script = ExtResource("4_m4eo6")
 
 [node name="Shape" type="CollisionShape2D" parent="MapBorder"]
-position = Vector2(313, -178.999)
 scale = Vector2(0.571068, 0.689439)
 shape = SubResource("RectangleShape2D_0bsht")
 

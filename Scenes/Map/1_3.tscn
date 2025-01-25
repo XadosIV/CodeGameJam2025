@@ -34,7 +34,6 @@ tile_set = ExtResource("4_c6nyq")
 script = ExtResource("4_uyecj")
 
 [node name="Shape" type="CollisionShape2D" parent="MapBorder"]
-position = Vector2(-17, -132.91)
 scale = Vector2(0.571068, 0.689439)
 shape = SubResource("RectangleShape2D_0bsht")
 
