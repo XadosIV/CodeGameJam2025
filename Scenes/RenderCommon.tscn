@@ -6,12 +6,12 @@
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
 [ext_resource type="Material" uid="uid://cgdr4d2hniyr5" path="res://Material/RenderCommon.tres" id="3_rneop"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
-[ext_resource type="Environment" path="res://env.tres" id="6_4oj8h"]
-[ext_resource type="PackedScene" path="res://Scenes/ui/OptionsGameMenu.tscn" id="7_pj0qr"]
+[ext_resource type="Environment" uid="uid://dj0gto4fslol4" path="res://env.tres" id="6_4oj8h"]
+[ext_resource type="PackedScene" uid="uid://ba1odrnivdowk" path="res://Scenes/ui/OptionsGameMenu.tscn" id="7_pj0qr"]
 [ext_resource type="Script" path="res://Scripts/OptionsMenuOpener.gd" id="7_ubium"]
 [ext_resource type="Script" path="res://Scripts/RewindController.gd" id="9_28lvp"]
 [ext_resource type="Script" path="res://Scripts/GhostController.gd" id="10_hfqlj"]
-[ext_resource type="PackedScene" path="res://Prefab/Memory_canvas.tscn" id="12_pss14"]
+[ext_resource type="PackedScene" uid="uid://b7tbclnn46us8" path="res://Prefab/Memory_canvas.tscn" id="12_pss14"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s6s76"]
 shader = ExtResource("1_lw4wa")
@@ -52,6 +52,7 @@ shader_parameter/screen_color = Color(0.8, 0.9, 1, 1)
 [node name="RenderCommon" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -67,6 +68,7 @@ script = ExtResource("10_hfqlj")
 script = ExtResource("3_lwjwy")
 
 [node name="CRTLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CRTLayer"]
 material = SubResource("ShaderMaterial_s6s76")
@@ -77,6 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ChromaticLayer" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("2_qc6h2")
 shader = ExtResource("3_rneop")
 env = ExtResource("6_4oj8h")
@@ -91,6 +94,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FogLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FogLayer"]
 material = SubResource("ShaderMaterial_kaal0")
@@ -101,6 +105,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TvLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="TvLayer"]
 material = SubResource("ShaderMaterial_xpw5h")
