@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/falling_stars_reverse.mp3-13d9ec5d61842d54f8f
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

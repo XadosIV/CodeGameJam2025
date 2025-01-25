@@ -130,21 +130,10 @@ func _load_audio_files(base_path: String) -> void:
 	_load_audio_from_directory(sound_path, _sounds)
 
 func _load_audio_from_directory(directory_path: String, target_array: Array[AudioStream]) -> void:
-	var dir: DirAccess = DirAccess.open(directory_path)
-	if !dir:
-		return
+	for file in DirAccess.get_files_at(directory_path):
+		if file.ends_with(".mp3") or file.ends_with(".wav"):
+			var file_path = directory_path + "/" + file
+			var stream: AudioStream = load(file_path) as AudioStream
+			if stream:
+				target_array.append(stream)
 
-	dir.list_dir_begin()
-	while true:
-		var file_name: String = dir.get_next()
-		if file_name == "":
-			break
-		if file_name == "." or file_name == "..":
-			continue
-		var file_path: String = directory_path + "/" + file_name
-		if not dir.current_is_dir():
-			if file_name.ends_with(".mp3") or file_name.ends_with(".wav"):
-				var stream: AudioStream = load(file_path) as AudioStream
-				if stream:
-					target_array.append(stream)
-	dir.list_dir_end()
