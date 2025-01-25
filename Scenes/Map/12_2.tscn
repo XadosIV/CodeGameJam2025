@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://cqe2ip3437447"]
+[gd_scene load_steps=13 format=4 uid="uid://cqe2ip3437447"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_r0nvc"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_qj2ee"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://Scripts/PressurePlateController.gd" id="6_4h1f1"]
 [ext_resource type="Texture2D" uid="uid://fpxhb2ivdn00" path="res://icon.svg" id="7_vjunt"]
 [ext_resource type="PackedScene" uid="uid://b6ug8dkk8uhyc" path="res://Prefab/pressure_plate.tscn" id="8_2ikr8"]
+[ext_resource type="Texture2D" uid="uid://tt8s5kjhrcvd" path="res://Sprites/tuto/tuto_mental.png" id="10_k6qhj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
 size = Vector2(2036, 1295)
@@ -45,8 +46,10 @@ shape = SubResource("RectangleShape2D_0bsht")
 [node name="Melody" parent="." instance=ExtResource("4_a5g3q")]
 unique_name_in_owner = true
 
-[node name="PlateController" type="Node2D" parent="."]
+[node name="PlateController" type="Node2D" parent="." node_paths=PackedStringArray("pressurePlate", "objectsToDisable")]
 script = ExtResource("6_4h1f1")
+pressurePlate = [NodePath("Pressure_Plate")]
+objectsToDisable = [NodePath("StaticBody2D"), NodePath("StaticBody2D3"), NodePath("StaticBody2D4")]
 enigmeName = "begin"
 
 [node name="StaticBody2D" type="StaticBody2D" parent="PlateController"]
@@ -57,16 +60,6 @@ modulate = Color(0, 0, 0, 1)
 texture = ExtResource("7_vjunt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlateController/StaticBody2D"]
-shape = SubResource("RectangleShape2D_3xfth")
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="PlateController"]
-position = Vector2(0, -508)
-
-[node name="Sprite2D" type="Sprite2D" parent="PlateController/StaticBody2D2"]
-modulate = Color(0, 0, 0, 1)
-texture = ExtResource("7_vjunt")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="PlateController/StaticBody2D2"]
 shape = SubResource("RectangleShape2D_3xfth")
 
 [node name="StaticBody2D3" type="StaticBody2D" parent="PlateController"]
@@ -91,5 +84,11 @@ shape = SubResource("RectangleShape2D_3xfth")
 
 [node name="Pressure_Plate" parent="PlateController" instance=ExtResource("8_2ikr8")]
 position = Vector2(705, -1)
+
+[node name="TutoMental" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(160, -100)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("10_k6qhj")
 
 [connection signal="body_exited" from="MapBorder" to="MapBorder" method="_on_body_exited"]

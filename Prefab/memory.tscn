@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs3g4hxpgqrbl"]
+[gd_scene load_steps=14 format=3 uid="uid://cs3g4hxpgqrbl"]
 
 [ext_resource type="Shader" path="res://Shaders/god_ray.gdshader" id="1_feyu0"]
 [ext_resource type="Script" path="res://Scripts/MemoryHandler.gd" id="1_n6rrw"]
 [ext_resource type="Texture2D" uid="uid://fpxhb2ivdn00" path="res://icon.svg" id="2_evy4a"]
+[ext_resource type="PackedScene" uid="uid://8846m653087k" path="res://Prefab/music_particles.tscn" id="4_7d87g"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qbp6e"]
 radius = 27.6
@@ -118,6 +119,13 @@ _data = {
 "idle": SubResource("Animation_37vn4")
 }
 
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_t274a"]
+light_mode = 1
+particles_animation = true
+particles_anim_h_frames = 7
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
 [node name="Memory" type="Area2D"]
 script = ExtResource("1_n6rrw")
 
@@ -133,3 +141,6 @@ libraries = {
 "": SubResource("AnimationLibrary_sdysk")
 }
 autoplay = "idle"
+
+[node name="Music_Particles" parent="." instance=ExtResource("4_7d87g")]
+material = SubResource("CanvasItemMaterial_t274a")
