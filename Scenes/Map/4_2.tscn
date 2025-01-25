@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="4_is6pk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
-size = Vector2(215, 1273.75)
+size = Vector2(215, 963.875)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true

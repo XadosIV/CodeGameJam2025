@@ -115,7 +115,9 @@ func _on_start_play_box():
 	particle.emitting = true
 	record_timer.start()
 	is_playing = true
-	AudioController.play_music(0, true, counter%134)
+	if counter > 134:
+		counter = 0
+	AudioController.play_music(0, true, counter)
 	
 func _on_stop_play_box():
 	particle.emitting = false	
