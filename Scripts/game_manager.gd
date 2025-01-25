@@ -9,13 +9,15 @@ signal stop_play_box
 signal start_rewind_box
 signal stop_rewind_box
 
+signal game_over
+
 @export var max_mental: float = 30
 @export var decrease_rate: float = 1
 @export var increase_rate: float = 5
 var mental_health: float = max_mental
 
-var player_pos = Vector2(200,0)
-var enter_side: String   = ""
+var player_pos: Vector2 = Vector2(200,0)
+var enter_side: String  = ""
 var corridor_offset: int = 0
 var current_animation: String = "face"
 var last_dir: Vector2 = Vector2.ZERO
@@ -26,19 +28,21 @@ var is_playing_box: bool = false
 var is_rewind_box: bool = false
 
 var rng = RandomNumberGenerator.new()
-var ghost = preload("res://Prefab/ghost.tscn")
+var ghost: PackedScene = preload("res://Prefab/ghost.tscn")
 
-@onready var current_scene = get_tree().current_scene
+var mainMenu = "res://Scenes/ui/MainMenu.tscn"
+
+@onready var current_scene: Node = get_tree().current_scene
+
+func _ready() -> void:
+	game_over.connect(_on_game_over)
 
 func _process(delta):
 	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
-		mental_health_decrease.emit(mental_health)
-		
-		if mental_health < 20:
-			if rng.randi_range(1,60)==7:
-				var instance = ghost.instantiate()
-				get_tree().current_scene.add_child(instance)
+		if mental_health <= 0:
+			game_over.emit()	
+		mental_health_decrease.emit(mental_health)	
 			
 	else:
 		if mental_health > max_mental:
@@ -115,3 +119,6 @@ func _set_is_rewind_box(value: bool) -> void:
 	else:
 		stop_rewind_box.emit()
 	is_rewind_box = value
+	
+func _on_game_over() -> void:
+	get_tree().change_scene_to_file(mainMenu)

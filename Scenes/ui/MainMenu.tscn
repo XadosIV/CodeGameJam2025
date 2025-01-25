@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://nrurw6h4saca"]
+[gd_scene load_steps=4 format=3 uid="uid://nrurw6h4saca"]
 
 [ext_resource type="Script" path="res://ui/main_menu_component.gd" id="1_5xvdm"]
+[ext_resource type="PackedScene" uid="uid://b8megb6bi58mx" path="res://Prefab/FadeTransition.tscn" id="2_x1o51"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_3xrhc"]
 font_size = 64
@@ -15,6 +16,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5xvdm")
+
+[node name="FadeTransition" parent="." instance=ExtResource("2_x1o51")]
+visible = false
+z_index = 1
+layout_mode = 1
 
 [node name="MarginContainer2" type="MarginContainer" parent="."]
 layout_mode = 1
