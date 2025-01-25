@@ -4,7 +4,7 @@ extends Control
 @export var game_file: String = "res://Scenes/Map/11_3.tscn"
 
 func _ready() -> void:
-	AudioController.play_music(1, true)
+	AudioController.play_music(2, true)
 
 func _on_play_pressed() -> void:
 	AudioController.stop_music(true)

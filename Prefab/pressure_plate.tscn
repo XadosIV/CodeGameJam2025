@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6ug8dkk8uhyc"]
+[gd_scene load_steps=6 format=3 uid="uid://b6ug8dkk8uhyc"]
 
 [ext_resource type="Texture2D" uid="uid://oletqlwyohlq" path="res://Sprites/pressure_plate_up.png" id="1_jqcnv"]
 [ext_resource type="Script" path="res://Scripts/PressurePlateStaticBody2D.gd" id="1_tvdgn"]
 [ext_resource type="Texture2D" uid="uid://cm31tx2od1m6a" path="res://Sprites/pressure_plate_down.png" id="2_l5djw"]
-[ext_resource type="Texture2D" uid="uid://doaa0j4qt4v2g" path="res://Sprites/light/small_light.png" id="4_6atuc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_u7a5i"]
 animations = [{
