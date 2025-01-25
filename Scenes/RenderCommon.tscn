@@ -50,7 +50,6 @@ shader_parameter/time = 1.817
 shader_parameter/screen_color = Color(0.8, 0.9, 1, 1)
 
 [node name="RenderCommon" type="Node2D"]
-visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 visible = false
@@ -72,7 +71,6 @@ script = ExtResource("3_lwjwy")
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CRTLayer"]
-visible = false
 material = SubResource("ShaderMaterial_s6s76")
 anchors_preset = 15
 anchor_right = 1.0
@@ -81,6 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ChromaticLayer" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("2_qc6h2")
 shader = ExtResource("3_rneop")
 env = ExtResource("6_4oj8h")
@@ -98,7 +97,6 @@ grow_vertical = 2
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FogLayer"]
-visible = false
 material = SubResource("ShaderMaterial_kaal0")
 anchors_preset = 15
 anchor_right = 1.0
@@ -110,7 +108,6 @@ grow_vertical = 2
 visible = false
 
 [node name="ColorRect" type="ColorRect" parent="TvLayer"]
-visible = false
 material = SubResource("ShaderMaterial_xpw5h")
 anchors_preset = 15
 anchor_right = 1.0
@@ -119,7 +116,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsMenu" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("7_ubium")
 
 [node name="OptionsMenu" parent="OptionsMenu" instance=ExtResource("7_pj0qr")]
