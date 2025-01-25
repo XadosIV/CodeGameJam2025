@@ -48,22 +48,28 @@ shader_parameter/time = 1.817
 shader_parameter/screen_color = Color(0.8, 0.9, 1, 1)
 
 [node name="RenderCommon" type="Node2D"]
+visible = false
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+visible = false
 energy = 0.0
 
 [node name="RewindController" type="Node2D" parent="."]
+visible = false
 script = ExtResource("9_28lvp")
 
 [node name="GhostController" type="Node2D" parent="."]
 script = ExtResource("10_hfqlj")
 
 [node name="CRTLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CRTLayer"]
+visible = false
 material = SubResource("ShaderMaterial_s6s76")
 anchors_preset = 15
 anchor_right = 1.0
@@ -72,12 +78,14 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ChromaticLayer" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("2_qc6h2")
 shader = ExtResource("3_rneop")
 env = ExtResource("6_4oj8h")
 effect_curve = SubResource("Curve_5wtg0")
 
 [node name="ColorRect" type="ColorRect" parent="ChromaticLayer"]
+visible = false
 material = ExtResource("3_rneop")
 anchors_preset = 15
 anchor_right = 1.0
@@ -86,8 +94,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FogLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FogLayer"]
+visible = false
 material = SubResource("ShaderMaterial_kaal0")
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,8 +106,10 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TvLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="TvLayer"]
+visible = false
 material = SubResource("ShaderMaterial_xpw5h")
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,6 +118,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="OptionsMenu" type="CanvasLayer" parent="."]
+visible = false
 script = ExtResource("7_ubium")
 
 [node name="OptionsMenu" parent="OptionsMenu" instance=ExtResource("7_pj0qr")]
