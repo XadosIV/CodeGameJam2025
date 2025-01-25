@@ -61,6 +61,41 @@ func change_scene(offset, side, player):
 	current_animation = player.current_animation
 	last_dir = player.last_direction
 	var ppos = player.position
+	
+	"""HARDCODE DES ASCENSEURS LETZGOO"""
+	if mapcord[0] == "1" and mapcord[1] == "3" and side == "top": #sous-sol
+		mapcord[0] = "11"
+		mapcord[1] = "4"
+		side = "bot"
+		current_animation = "face_idle"
+	elif mapcord[0] == "11" and mapcord[1] == "5" and side == "top":
+		mapcord[0] = "1"
+		mapcord[1] = "2"
+		side = "bot"
+		current_animation = "face_idle"
+	elif mapcord[0] == "10" and mapcord[1] == "6" and side == "top":
+		mapcord[0] = "23"
+		mapcord[1] = "4"
+		side = "bot"
+		current_animation = "face_idle"
+	elif mapcord[0] == "23" and mapcord[1] == "5" and side == "top":
+		mapcord[0] = "10"
+		mapcord[1] = "5"
+		side = "bot"
+		current_animation = "face_idle"
+	elif mapcord[0] == "23" and mapcord[1] == "3" and side == "top":
+		mapcord[0] = "30"
+		mapcord[1] = "0"
+		side = "bot"
+		current_animation = "face_idle"
+	elif mapcord[0] == "30" and mapcord[1] == "2" and side == "top":
+		mapcord[0] = "23"
+		mapcord[1] = "2"
+		side = "bot"
+		current_animation = "face_idle"
+	"""FIN DE LA TRICHE"""
+	
+	
 	if side == "left": #gauche -> droite
 		mapcord[0] = str(int(mapcord[0])-1)
 		enter_side = "right"
