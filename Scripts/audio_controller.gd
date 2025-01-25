@@ -126,11 +126,10 @@ func _load_audio_files(base_path: String) -> void:
 	var music_path: String = base_path + "/Musics"
 	var sound_path: String = base_path + "/Sounds"
 
-	_load_mp3_from_directory(music_path, _musics)
-	_load_mp3_from_directory(sound_path, _sounds)
+	_load_audio_from_directory(music_path, _musics)
+	_load_audio_from_directory(sound_path, _sounds)
 
-
-func _load_mp3_from_directory(directory_path: String, target_array: Array[AudioStream]) -> void:
+func _load_audio_from_directory(directory_path: String, target_array: Array[AudioStream]) -> void:
 	var dir: DirAccess = DirAccess.open(directory_path)
 
 	if not dir:
@@ -143,21 +142,25 @@ func _load_mp3_from_directory(directory_path: String, target_array: Array[AudioS
 		if file_name == "":
 			break
 
-		# Ignorer les entrées système
+		# Ignorer les entrées système et extensions inutiles
 		if file_name == "." or file_name == "..":
 			continue
 
+		# Vérifier les fichiers valides
 		var file_path: String = directory_path + "/" + file_name
-		if not dir.current_is_dir() and file_name.ends_with(".mp3"):
-			# Charger un fichier MP3 en utilisant PackedByteArray et AudioStreamMP3
-			var audio_stream: AudioStreamMP3 = _load_mp3(file_path)
+		if not dir.current_is_dir() and (file_name.ends_with(".mp3") or file_name.ends_with(".mp3.import")):
+			# Traiter les fichiers .import
+			if file_name.ends_with(".import"):
+				file_path = file_path.left(file_path.length() - ".import".length())
+
+			# Charger le fichier audio
+			var audio_stream: AudioStream = load(file_path)
 			if audio_stream:
 				target_array.append(audio_stream)
 			else:
 				print("Erreur : Impossible de charger le fichier audio :", file_path)
 
 	dir.list_dir_end()
-
 
 func _load_mp3(file_path: String) -> AudioStreamMP3:
 	var file: FileAccess = FileAccess.open(file_path, FileAccess.READ)
@@ -168,5 +171,3 @@ func _load_mp3(file_path: String) -> AudioStreamMP3:
 	var sound = AudioStreamMP3.new()
 	sound.data = file.get_buffer(file.get_length())
 	return sound
-
-
