@@ -52,7 +52,6 @@ shader_parameter/screen_color = Color(0.8, 0.9, 1, 1)
 [node name="RenderCommon" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-visible = false
 color = Color(0, 0, 0, 1)
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
@@ -68,7 +67,6 @@ script = ExtResource("10_hfqlj")
 script = ExtResource("3_lwjwy")
 
 [node name="CRTLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="CRTLayer"]
 material = SubResource("ShaderMaterial_s6s76")
@@ -79,7 +77,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ChromaticLayer" type="CanvasLayer" parent="."]
-visible = false
 script = ExtResource("2_qc6h2")
 shader = ExtResource("3_rneop")
 env = ExtResource("6_4oj8h")
@@ -94,7 +91,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="FogLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FogLayer"]
 material = SubResource("ShaderMaterial_kaal0")
@@ -105,7 +101,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="TvLayer" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="ColorRect" type="ColorRect" parent="TvLayer"]
 material = SubResource("ShaderMaterial_xpw5h")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dhtep2h3wl5do"]
+[gd_scene load_steps=13 format=4 uid="uid://dhtep2h3wl5do"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_x6cnq"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_blbtg"]
@@ -6,9 +6,16 @@
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_ipugc"]
 [ext_resource type="PackedScene" uid="uid://bb5uqxuadi0hx" path="res://Prefab/Tilemaps/key_0.tscn" id="3_ju3lk"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="4_drpfa"]
+[ext_resource type="Script" path="res://Scripts/PressurePlateController.gd" id="7_61pyo"]
+[ext_resource type="Texture2D" uid="uid://fpxhb2ivdn00" path="res://icon.svg" id="8_g5ht1"]
+[ext_resource type="PackedScene" uid="uid://b6ug8dkk8uhyc" path="res://Prefab/pressure_plate.tscn" id="9_i78lc"]
+[ext_resource type="Texture2D" uid="uid://dlid61yx2y4oo" path="res://Sprites/tuto/tuto_double.png" id="10_5dq5p"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
 size = Vector2(2445.5, 1082.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p8gke"]
+size = Vector2(128, 128)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -39,5 +46,33 @@ shape = SubResource("RectangleShape2D_0bsht")
 [node name="Melody" parent="." instance=ExtResource("4_drpfa")]
 unique_name_in_owner = true
 position = Vector2(-186, 21)
+
+[node name="PlateController" type="Node2D" parent="." node_paths=PackedStringArray("pressurePlate", "objectsToDisable")]
+script = ExtResource("7_61pyo")
+pressurePlate = [NodePath("Pressure_Plate"), NodePath("Pressure_Plate2")]
+objectsToDisable = [NodePath("StaticBody2D")]
+enigmeName = "cantine_duo"
+
+[node name="StaticBody2D" type="StaticBody2D" parent="PlateController"]
+position = Vector2(830, -198)
+
+[node name="Sprite2D" type="Sprite2D" parent="PlateController/StaticBody2D"]
+modulate = Color(0, 0, 0, 1)
+texture = ExtResource("8_g5ht1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlateController/StaticBody2D"]
+shape = SubResource("RectangleShape2D_p8gke")
+
+[node name="Pressure_Plate" parent="PlateController" instance=ExtResource("9_i78lc")]
+position = Vector2(691, -239)
+
+[node name="Pressure_Plate2" parent="PlateController" instance=ExtResource("9_i78lc")]
+position = Vector2(692, -154)
+
+[node name="TutoDouble" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(375, -202)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("10_5dq5p")
 
 [connection signal="body_exited" from="MapBorder" to="MapBorder" method="_on_body_exited"]
