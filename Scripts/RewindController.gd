@@ -11,7 +11,7 @@ func _ready() -> void:
 func _on_start_rewind() -> void:
 	current_clone = clone_prefab.instantiate()
 	get_tree().current_scene.add_child(current_clone)
-	AudioController.play_music(2, true)
+	AudioController.play_music(1, true)
 	
 func _on_stop_rewind() -> void:
 	current_clone.queue_free()
