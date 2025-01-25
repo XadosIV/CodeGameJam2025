@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="1_lw4wa"]
 [ext_resource type="Script" path="res://Scripts/MentalHealthEffect.gd" id="2_qc6h2"]
-[ext_resource type="Script" path="res://Scenes/tilemap_controller.gd" id="3_lwjwy"]
+[ext_resource type="Script" path="res://Scripts/tilemap_controller.gd" id="3_lwjwy"]
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
 [ext_resource type="Material" uid="uid://cgdr4d2hniyr5" path="res://Material/RenderCommon.tres" id="3_rneop"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
