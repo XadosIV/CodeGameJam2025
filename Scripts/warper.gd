@@ -7,11 +7,14 @@ var bot = []
 var border
 var initiated = false
 
-func _enter_tree():
-	var magic_number = get_parent().get_node("%Melody").get_node("CollisionShape2D").position.y * 2
-	var map = get_parent().get_node("TileMapLayer")
-	border = get_node("Shape").shape.get_rect()
-	
+func print_all_sides():
+	print("---")
+	print(left)
+	print(right)
+	print(top)
+	print(bot)
+
+func try_to_find_sides(map):
 	#find top exit
 	var y = border.position.y
 	for i in range(border.position.x, border.end.x, 32):
@@ -51,6 +54,22 @@ func _enter_tree():
 			mapcoor[1] += 2
 			right.append(map.map_to_local(mapcoor)[1]-16)#- magic_number)
 			break
+
+func _enter_tree():
+	var magic_number = get_parent().get_node("%Melody").get_node("CollisionShape2D").position.y * 2
+	var map = get_parent().get_node("TileMapLayer")
+	border = get_node("Shape").shape.get_rect()
+	try_to_find_sides(map)
+	
+	print_all_sides()
+	
+	for i in range(0,3):
+		map = get_parent().get_node("Key"+str(i))
+		if map:
+			try_to_find_sides(map)
+			print_all_sides()
+			
+	
 	initiated = true
 
 func _on_body_exited(body):

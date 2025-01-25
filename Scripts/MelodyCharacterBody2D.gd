@@ -28,8 +28,6 @@ func _ready():
 	record_timer.one_shot = true
 	record_timer.timeout.connect(_on_RecordTimer_timeout)
 
-func _process(delta):
-	print(position)
 
 func _physics_process(delta: float) -> void:
 	var direction: Vector2 = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
