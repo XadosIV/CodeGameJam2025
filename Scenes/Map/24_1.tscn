@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_0ofwn"]
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_f2oni"]
 [ext_resource type="PackedScene" uid="uid://4lq63lomhgkj" path="res://Prefab/Tilemaps/key_1.tscn" id="3_vx7mb"]
-[ext_resource type="PackedScene" uid="uid://b526c8qw8uhwe" path="res://Prefab/Tilemaps/key_2.tscn" id="4_6jeft"]
+[ext_resource type="PackedScene" path="res://Prefab/Tilemaps/key_2.tscn" id="4_6jeft"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_axlq1"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="5_kpbpw"]
 
@@ -31,6 +31,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -1)
 scale = Vector2(1.5, 1.5)
+tile_map_data = PackedByteArray("AAAIAPb/AQABAEoAAAD0/wUAAgAAAAAAAAD4/wUAAgAAAAAAAAD6/wUAAgAAAAAAAAAFAAUAAgAAAAAAAAAHAAUAAgAAAAAAAAALAAUAAgAAAAAAAAD0//3/AgAAAAAAAAD3////AQABAEoAAAD4//3/AgAAAAAAAAD6//3/AgAAAAAAAAAFAP3/AgAAAAAAAAAHAP3/AgAAAAAAAAAIAP//AQABAEoAAAALAP3/AgAAAAAAAAD0/wYAAQAAAFYAAAD3/wYAAQAAAFYAAAD6/wYAAQAAAFYAAAAFAAYAAQAAAFYAAAAIAAYAAQAAAFYAAAALAAYAAQAAAFYAAAD6//X/AQAMAEoAAAD3//b/AQAEAFAAAAD1//X/AQAKAFcAAAD1//b/AQAKAFgAAAD1//f/AQAKAFkAAAD1//j/AQAKAFoAAAD2//X/AQALAFcAAAD2//b/AQALAFgAAAD2//f/AQALAFkAAAD2//j/AQALAFoAAAD5//X/AQAKAGIAAAAFAPX/AQAKAGIAAAAJAPX/AQAKAGIAAAAFAP7/AQAKAGIAAAAJAP7/AQAKAGIAAAD4//7/AQAKAGIAAAD0//7/AQAKAGIAAAA=")
 tile_set = ExtResource("3_f2oni")
 
 [node name="MapBorder" type="Area2D" parent="."]

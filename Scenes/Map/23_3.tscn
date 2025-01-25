@@ -1,10 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://b00yiopybv855"]
+[gd_scene load_steps=9 format=4 uid="uid://c2k4mn1gudsjt"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_xdi0k"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_c2lir"]
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_wb3kf"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_1lua0"]
-[ext_resource type="PackedScene" uid="uid://b526c8qw8uhwe" path="res://Prefab/Tilemaps/key_2.tscn" id="4_c3siu"]
+[ext_resource type="PackedScene" path="res://Prefab/Tilemaps/key_2.tscn" id="4_c3siu"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="5_khwxq"]
 [ext_resource type="Texture2D" uid="uid://doaa0j4qt4v2g" path="res://Sprites/light/small_light.png" id="6_rum34"]
 
@@ -25,7 +25,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -1)
 scale = Vector2(1.5, 1.5)
-tile_map_data = PackedByteArray("AAAAAPL/AAAOAGIAAAA=")
+tile_map_data = PackedByteArray("AAAAAPL/AAAOAGIAAAAFAPr/AAAEABcAAAD6//r/AAAEABcAAAADAPr/AAAEAAUAAAD9//n/AAAEAEsAAAA=")
 tile_set = ExtResource("3_wb3kf")
 
 [node name="Key2" parent="." instance=ExtResource("4_c3siu")]

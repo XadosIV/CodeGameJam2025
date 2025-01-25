@@ -23,6 +23,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -1)
 scale = Vector2(1.5, 1.5)
+tile_map_data = PackedByteArray("AAAEAP3/AgACABYAAAD7//3/AgAAABYAAADZ//3/AAACACoAAADg//3/AAACACoAAADn//3/AAACACoAAADu//3/AAACACoAAAD1//3/AAACACoAAAAJAP3/AAACACoAAAAQAP3/AAACACoAAAAXAP3/AAACACoAAAAeAP3/AAACACoAAAAkAP3/AAACACoAAAA=")
 tile_set = ExtResource("3_gq25r")
 
 [node name="MapBorder" type="Area2D" parent="."]
