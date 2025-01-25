@@ -48,7 +48,6 @@ func start():
 	mental_health = max_mental
 
 func _process(delta) -> void:
-	print(mental_health)
 	if get_tree().current_scene is Control:
 		return
 	if is_playing_memory: 

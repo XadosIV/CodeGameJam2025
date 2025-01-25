@@ -168,5 +168,3 @@ func _load_mp3(file_path: String) -> AudioStreamMP3:
 	var sound = AudioStreamMP3.new()
 	sound.data = file.get_buffer(file.get_length())
 	return sound
-
-
