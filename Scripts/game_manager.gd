@@ -28,8 +28,6 @@ var is_playing_box: bool = false
 var is_rewind_box: bool = false
 
 var rng = RandomNumberGenerator.new()
-var ghost: PackedScene = preload("res://Prefab/ghost.tscn")
-
 var mainMenu = "res://Scenes/ui/MainMenu.tscn"
 
 @onready var current_scene: Node = get_tree().current_scene
@@ -38,7 +36,6 @@ func _ready() -> void:
 	game_over.connect(_on_game_over)
 
 func _process(delta):
-	update_tilemap()
 	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
 		if mental_health <= 0:
@@ -106,7 +103,7 @@ func find_map(side, coord):
 func collect_memory(id:int):
 	if id >= 0 and id < memories.size():
 		memories[id] = true
-		update_tilemap()
+		get_tree().current_scene.get_node("RenderCommon/TilemapController").update_tilemap()
 	
 func _set_is_play_box(value: bool) -> void:
 	if value:
@@ -124,54 +121,3 @@ func _set_is_rewind_box(value: bool) -> void:
 	
 func _on_game_over() -> void:
 	get_tree().change_scene_to_file(mainMenu)
-
-func update_tilemap():
-	var bt = get_tree().current_scene.get_node("TileMapLayer")
-	var used_tiles = bt.get_used_cells()
-	for i in range(0,3):
-		if memories[i]:
-			var adj = []
-			var horizontal_check = []
-			var vertical_check = []
-			var tilemap = get_tree().current_scene.get_node("Key"+str(0))
-			if tilemap:
-				var ut = tilemap.get_used_cells()
-				for tile in used_tiles:
-					var x = tile.x
-					var y = tile.y
-					if ut.has(Vector2i(x,y+1)):
-						adj.append(tile)
-						horizontal_check.append(Vector2i(x,y+1))
-					elif ut.has(Vector2i(x,y-1)):
-						adj.append(tile)
-						horizontal_check.append(Vector2i(x,y-1))
-					elif ut.has(Vector2i(x-1,y)):
-						adj.append(tile)
-						vertical_check.append(Vector2i(x-1,y))
-						 
-					elif ut.has(Vector2i(x+1,y)):
-						adj.append(tile)
-						vertical_check.append(Vector2i(x+1,y))
-			
-				for tile in adj:
-					bt.set_cell(tile, 0, Vector2i(1,1))
-				for tile in horizontal_check:
-					if ut.has(Vector2i(tile.x+1,tile.y)): # si droite
-						if ut.has(Vector2i(tile.x-1,tile.y)): # si gauche
-							tilemap.set_cell(tile, 0, Vector2i(1,1))
-						else:
-							tilemap.set_cell(tile, 0, Vector2i(0,1))
-					elif ut.has(Vector2i(tile.x-1,tile.y)): # si gauche
-						tilemap.set_cell(tile, 0, Vector2i(2,1))
-					else:
-						tilemap.set_cell(tile, 0, Vector2i(4,1))
-				for tile in vertical_check:
-					if ut.has(Vector2i(tile.x,tile.y-1)): # si haut
-						if ut.has(Vector2i(tile.x,tile.y+1)): # si bas
-							tilemap.set_cell(tile, 0, Vector2i(1,1))
-						else:
-							tilemap.set_cell(tile, 0, Vector2i(1,2))
-					elif ut.has(Vector2i(tile.x,tile.y+1)): # si bas
-						tilemap.set_cell(tile, 0, Vector2i(1,0))
-					else:
-						tilemap.set_cell(tile, 0, Vector2i(7,0))
