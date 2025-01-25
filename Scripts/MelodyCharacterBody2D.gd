@@ -107,11 +107,13 @@ func _on_draw():
 func _on_start_play_box():
 	particle.emitting = true
 	record_timer.start()
+	AudioController.play_music(0, true)
 	
 func _on_stop_play_box():
 	particle.emitting = false	
 	if(not record_timer.is_stopped()):
 		record_timer.stop()
+	AudioController.stop_music(true)
 	
 func _on_current_record():
 	RewindManager._append_position(get_global_position())	
