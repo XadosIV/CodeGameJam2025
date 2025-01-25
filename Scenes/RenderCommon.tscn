@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bp6wu1nuqae5i"]
+[gd_scene load_steps=17 format=3 uid="uid://bp6wu1nuqae5i"]
 
 [ext_resource type="Shader" path="res://Shaders/CRT.gdshader" id="1_lw4wa"]
 [ext_resource type="Script" path="res://Scripts/MentalHealthEffect.gd" id="2_qc6h2"]
