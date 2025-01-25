@@ -4,12 +4,12 @@
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_c2lir"]
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_wb3kf"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_1lua0"]
-[ext_resource type="PackedScene" path="res://Prefab/Tilemaps/key_2.tscn" id="4_c3siu"]
+[ext_resource type="PackedScene" uid="uid://b526c8qw8uhwe" path="res://Prefab/Tilemaps/key_2.tscn" id="4_c3siu"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="5_khwxq"]
 [ext_resource type="Texture2D" uid="uid://doaa0j4qt4v2g" path="res://Sprites/light/small_light.png" id="6_rum34"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
-size = Vector2(748.55, 523.398)
+size = Vector2(748.55, 502.699)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true

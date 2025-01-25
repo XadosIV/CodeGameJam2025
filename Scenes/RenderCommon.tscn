@@ -6,12 +6,12 @@
 [ext_resource type="Shader" path="res://Shaders/Fog.gdshader" id="3_pdbbo"]
 [ext_resource type="Material" uid="uid://cgdr4d2hniyr5" path="res://Material/RenderCommon.tres" id="3_rneop"]
 [ext_resource type="Shader" path="res://Shaders/tv_on.gdshader" id="4_bodh3"]
-[ext_resource type="Environment" uid="uid://dj0gto4fslol4" path="res://env.tres" id="6_4oj8h"]
-[ext_resource type="PackedScene" uid="uid://ba1odrnivdowk" path="res://Scenes/ui/OptionsGameMenu.tscn" id="7_pj0qr"]
+[ext_resource type="Environment" path="res://env.tres" id="6_4oj8h"]
+[ext_resource type="PackedScene" path="res://Scenes/ui/OptionsGameMenu.tscn" id="7_pj0qr"]
 [ext_resource type="Script" path="res://Scripts/OptionsMenuOpener.gd" id="7_ubium"]
 [ext_resource type="Script" path="res://Scripts/RewindController.gd" id="9_28lvp"]
 [ext_resource type="Script" path="res://Scripts/GhostController.gd" id="10_hfqlj"]
-[ext_resource type="PackedScene" uid="uid://b7tbclnn46us8" path="res://Prefab/Memory_canvas.tscn" id="12_pss14"]
+[ext_resource type="PackedScene" path="res://Prefab/Memory_canvas.tscn" id="12_pss14"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s6s76"]
 shader = ExtResource("1_lw4wa")
@@ -115,7 +115,6 @@ script = ExtResource("7_ubium")
 
 [node name="OptionsMenu" parent="OptionsMenu" instance=ExtResource("7_pj0qr")]
 unique_name_in_owner = true
-visible = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("6_4oj8h")

@@ -76,14 +76,11 @@ func _process(delta) -> void:
 		
 func change_scene(offset, side, player):
 	var name = get_tree().current_scene.scene_file_path
-	print(name)
 	var mapcord = name.split("/")[4].split(".")[0].split("_")
-	print(mapcord)
 	
 	current_animation = player.current_animation
 	last_dir = player.last_direction
 	var ppos = player.position
-	
 	"""HARDCODE DES ASCENSEURS LETZGOO"""
 	if mapcord[0] == "1" and mapcord[1] == "3" and side == "top": #sous-sol
 		mapcord[0] = "11"
@@ -113,6 +110,16 @@ func change_scene(offset, side, player):
 	elif mapcord[0] == "30" and mapcord[1] == "1" and side == "top":
 		mapcord[0] = "23"
 		mapcord[1] = "2"
+		side = "bot"
+		current_animation = "face_idle"
+	elif mapcord[0] == "14" and mapcord[1] == "3" and side == "top":
+		mapcord[0] = "4"
+		mapcord[1] = "1"
+		side = "bot"
+		current_animation = "face_idle"
+	elif mapcord[0] == "4" and mapcord[1] == "2" and side == "top":
+		mapcord[0] == "14"
+		mapcord[1] == "2"
 		side = "bot"
 		current_animation = "face_idle"
 	"""FIN DE LA TRICHE"""

@@ -8,18 +8,19 @@ func hide_tilemaps():
 	for i in range(0,3):
 		var tilemap = get_tree().current_scene.get_node("Key"+str(i))
 		if tilemap:
-			tilemap.visible = not GameManager.memories[i]
+			tilemap.visible = GameManager.memories[i]
 
 func update_tilemap():
 	var bt = get_tree().current_scene.get_node("TileMapLayer")
 	var used_tiles = bt.get_used_cells()
 	for i in range(0,3):
-		if not GameManager.memories[i]:
+		if GameManager.memories[i]:
 			var adj = []
 			var horizontal_check = []
 			var vertical_check = []
 			var tilemap = get_tree().current_scene.get_node("Key"+str(i))
 			if tilemap:
+				tilemap.visible = true
 				var ut = tilemap.get_used_cells()
 				for tile in used_tiles:
 					var x = tile.x
