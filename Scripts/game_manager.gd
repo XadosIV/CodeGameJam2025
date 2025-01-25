@@ -38,6 +38,7 @@ var mainMenu: String = "res://Scenes/ui/MainMenu.tscn"
 
 func _ready() -> void:
 	game_over.connect(_on_game_over)
+	AudioController.play_sound(0)
 
 func _process(delta) -> void:
 	if is_playing_memory: 

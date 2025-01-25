@@ -15,7 +15,6 @@ func _ready() -> void:
 	print("Loaded sounds: ", _sounds.size())
 
 # --- Gestion des volumes ---
-
 func get_global_volume_percentage() -> float:
 	return global_volume
 
