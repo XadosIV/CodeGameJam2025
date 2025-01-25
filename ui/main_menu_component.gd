@@ -3,7 +3,7 @@ extends Control
 @onready var fadein = $FadeTransition
 
 @export var options_file: String = "res://Scenes/ui/OptionsMenu.tscn"
-@export var game_file: String = "res://Scenes/Map/11_3.tscn"
+@export var game_file: String = "res://Scenes/Map/12_2.tscn"
 
 func _ready() -> void:
 	AudioController.play_music(2, true)

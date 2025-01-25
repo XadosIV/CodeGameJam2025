@@ -46,7 +46,7 @@ shape = SubResource("RectangleShape2D_0bsht")
 [node name="Melody" parent="." instance=ExtResource("4_a5g3q")]
 unique_name_in_owner = true
 
-[node name="PlateController" type="Node2D" parent="."]
+[node name="PlateController" type="Node2D" parent="." node_paths=PackedStringArray("pressurePlate", "objectsToDisable")]
 script = ExtResource("6_4h1f1")
 pressurePlate = [NodePath("Pressure_Plate")]
 objectsToDisable = [NodePath("StaticBody2D"), NodePath("StaticBody2D3"), NodePath("StaticBody2D4")]
