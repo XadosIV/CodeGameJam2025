@@ -12,6 +12,10 @@
 [ext_resource type="Script" path="res://Scripts/RewindController.gd" id="9_28lvp"]
 [ext_resource type="Script" path="res://Scripts/GhostController.gd" id="10_hfqlj"]
 
+[sub_resource type="Curve" id="Curve_hgkhg"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 3.0, 0.0, 0, 0]
+point_count = 2
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s6s76"]
 shader = ExtResource("1_lw4wa")
 shader_parameter/resolution = Vector2(320, 180)
@@ -65,6 +69,7 @@ script = ExtResource("9_28lvp")
 
 [node name="GhostController" type="Node2D" parent="."]
 script = ExtResource("10_hfqlj")
+spawning_curve = SubResource("Curve_hgkhg")
 
 [node name="TilemapController" type="Node2D" parent="."]
 script = ExtResource("3_lwjwy")

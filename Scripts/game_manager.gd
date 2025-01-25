@@ -27,8 +27,7 @@ var memories: Array[bool] = [false, false, false]
 var is_playing_box: bool = false
 var is_rewind_box: bool = false
 
-var rng = RandomNumberGenerator.new()
-var mainMenu = "res://Scenes/ui/MainMenu.tscn"
+var mainMenu: String = "res://Scenes/ui/MainMenu.tscn"
 
 @onready var current_scene: Node = get_tree().current_scene
 
