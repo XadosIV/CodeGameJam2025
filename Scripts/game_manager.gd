@@ -33,10 +33,19 @@ var is_playing_memory: bool = false
 
 var mainMenu: String = "res://Scenes/ui/MainMenu.tscn"
 
+var gameover
+
 @onready var current_scene: Node = get_tree().current_scene
 
 func _ready() -> void:
 	game_over.connect(_on_game_over)
+	
+	gameover = TextureRect.new()
+	gameover.texture = preload("res://gameover.png")
+	gameover.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	gameover.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	gameover.visible = false
+	
 	AudioController.play_sound(0)
 
 func start():
