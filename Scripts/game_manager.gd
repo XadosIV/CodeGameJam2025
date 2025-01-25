@@ -89,7 +89,7 @@ func change_scene(offset, side, player):
 		mapcord[1] = "0"
 		side = "bot"
 		current_animation = "face_idle"
-	elif mapcord[0] == "30" and mapcord[1] == "2" and side == "top":
+	elif mapcord[0] == "30" and mapcord[1] == "1" and side == "top":
 		mapcord[0] = "23"
 		mapcord[1] = "2"
 		side = "bot"

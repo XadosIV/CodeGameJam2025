@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b526c8qw8uhwe"]
+
+[ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="1_ygxt4"]
+
+[node name="Key2" type="TileMapLayer"]
+modulate = Color(1, 0, 0, 1)
+tile_set = ExtResource("1_ygxt4")

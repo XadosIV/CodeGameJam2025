@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=4 uid="uid://dfxjagc4nkmj0"]
+[gd_scene load_steps=9 format=4 uid="uid://bc0scfe4bqh8w"]
 
 [ext_resource type="PackedScene" uid="uid://bp6wu1nuqae5i" path="res://Scenes/RenderCommon.tscn" id="1_maotj"]
 [ext_resource type="TileSet" uid="uid://duqhf53wn1pd7" path="res://Tileset/MainTileSet.tres" id="2_ea2qh"]
 [ext_resource type="TileSet" uid="uid://xojd5mvjxyrf" path="res://Tileset/Hospital.tres" id="3_h58jt"]
+[ext_resource type="PackedScene" uid="uid://4lq63lomhgkj" path="res://Prefab/Tilemaps/key_1.tscn" id="4_sulmq"]
 [ext_resource type="Script" path="res://Scripts/warper.gd" id="4_tqif8"]
+[ext_resource type="PackedScene" uid="uid://b526c8qw8uhwe" path="res://Prefab/Tilemaps/key_2.tscn" id="5_q5t85"]
 [ext_resource type="PackedScene" uid="uid://vkuos3naf2al" path="res://Prefab/melody.tscn" id="5_yowau"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bsht"]
@@ -24,6 +26,12 @@ y_sort_enabled = true
 position = Vector2(0, -1)
 scale = Vector2(1.5, 1.5)
 tile_set = ExtResource("3_h58jt")
+
+[node name="Key1" parent="." instance=ExtResource("4_sulmq")]
+tile_map_data = PackedByteArray("AAAGAAoAAAACAAEAAAAGAAkAAAACAAEAAAAGAAgAAAACAAEAAAAGAAcAAAACAAEAAAAGAAYAAAACAAEAAAAGAAUAAAACAAEAAAAGAAQAAAACAAEAAAAGAAMAAAACAAEAAAAGAAIAAAACAAEAAAAGAAEAAAACAAAAAAAFAAoAAAAAAAEAAAAFAAkAAAAAAAEAAAAFAAgAAAAAAAEAAAAFAAcAAAAAAAEAAAAFAAYAAAAAAAEAAAAFAAUAAAAAAAEAAAAFAAQAAAAAAAEAAAAFAAMAAAAAAAEAAAAFAAIAAAAAAAEAAAAFAAEAAAAAAAAAAAAGAA4AAAACAAEAAAAGAA0AAAACAAEAAAAGAAwAAAACAAEAAAAGAAsAAAACAAEAAAAFAA4AAAAAAAEAAAAFAA0AAAAAAAEAAAAFAAwAAAAAAAEAAAAFAAsAAAAAAAEAAAAGAA8AAAACAAIAAAAFAA8AAAAAAAIAAAA=")
+
+[node name="Key2" parent="." instance=ExtResource("5_q5t85")]
+tile_map_data = PackedByteArray("AAD1//7/AAACAAIAAAD1//3/AAACAAEAAAD1//z/AAACAAEAAAD1//v/AAACAAEAAAD1//r/AAACAAEAAAD1//n/AAACAAEAAAD1//j/AAACAAEAAAD1//f/AAACAAEAAAD1//b/AAACAAEAAAD1//X/AAACAAEAAAD0//7/AAAAAAIAAAD0//3/AAAAAAEAAAD0//z/AAAAAAEAAAD0//v/AAAAAAEAAAD0//r/AAAAAAEAAAD0//n/AAAAAAEAAAD0//j/AAAAAAEAAAD0//f/AAAAAAEAAAD0//b/AAAAAAEAAAD0//X/AAAAAAEAAAD1//T/AAACAAEAAAD1//P/AAACAAEAAAD1//L/AAACAAEAAAD1//H/AAACAAAAAAD0//T/AAAAAAEAAAD0//P/AAAAAAEAAAD0//L/AAAAAAEAAAD0//H/AAAAAAAAAAA=")
 
 [node name="MapBorder" type="Area2D" parent="."]
 script = ExtResource("4_tqif8")
