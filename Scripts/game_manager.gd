@@ -76,7 +76,10 @@ func _process(delta) -> void:
 		
 func change_scene(offset, side, player):
 	var name = get_tree().current_scene.scene_file_path
+	print(name)
 	var mapcord = name.split("/")[4].split(".")[0].split("_")
+	print(mapcord)
+	
 	current_animation = player.current_animation
 	last_dir = player.last_direction
 	var ppos = player.position
@@ -130,14 +133,41 @@ func change_scene(offset, side, player):
 	
 	corridor_offset = offset
 	
+	print(mapcord)	
 	if not valid_map(mapcord):
 		mapcord = find_map(enter_side, mapcord)
+		
+	print(mapcord)	
+	print_directory_contents("res://Scenes/Map/")
 	
 	print("changed to : " + mapcord[0]+"_"+mapcord[1]+".tscn")
 	get_tree().change_scene_to_file("res://Scenes/Map/"+mapcord[0]+"_"+mapcord[1]+".tscn")
 
 func valid_map(coord):
-	return FileAccess.file_exists("res://Scenes/Map/"+coord[0]+"_"+coord[1]+".tscn")
+	var dir = DirAccess.open("res://Scenes/Map/")
+	if dir:
+		return dir.file_exists(str(coord[0]) + "_" + str(coord[1]) + ".tscn.remap")
+	return false
+	
+func print_directory_contents(directory_path: String, indent: String = ""):
+	var dir = DirAccess.open(directory_path)
+	if dir:
+		dir.list_dir_begin()  # Commence à lister les fichiers
+		var file_name = dir.get_next()
+		
+		while file_name != "":
+			# Si c'est un répertoire, on appelle récursivement la fonction
+			if dir.current_is_dir():
+				print(indent + "[DIR] " + file_name)
+				print_directory_contents(directory_path + "/" + file_name, indent + "  ")
+			else:
+				# Sinon, on imprime le fichier
+				print(indent + "[FILE] " + file_name)
+			
+			file_name = dir.get_next()  # Passe au fichier suivant
+		
+		dir.list_dir_end()  # Termine la liste des fichiers
+	
 
 func find_map(side, coord):
 	var floor = floor(int(coord[0])/10)
