@@ -30,18 +30,6 @@ var ghost = preload("res://Prefab/ghost.tscn")
 
 @onready var current_scene = get_tree().current_scene
 
-var door_memory = {
-	0: {
-			"11_3.tscn": [Vector2(-1, -7), Vector2(0, -7)],
-			"11_5.tscn": [Vector2(-1, 16), Vector2(0, 16)]
-		},
-	1: [],
-	2: []
-}
-
-var locked_tilemaps = ["TileMapLayer2"]
-
-
 func _process(delta):
 	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
@@ -113,9 +101,6 @@ func find_map(side, coord):
 func collect_memory(id:int):
 	if id >= 0 and id < memories.size():
 		memories[id] = true
-		print("Memory collected:", id)
-		print(memories)
-		open_doors(id)
 	
 func _set_is_play_box(value: bool) -> void:
 	if value:
@@ -130,15 +115,3 @@ func _set_is_rewind_box(value: bool) -> void:
 	else:
 		stop_rewind_box.emit()
 	is_rewind_box = value
-		
-func open_doors(id:int):
-	var atlas_cord = Vector2i(1,1)
-	if door_memory.has(id) && memories[id] == true:
-		for t in door_memory[id].keys():
-			print(current_scene)
-			if(t == current_scene):
-				var tilemap = get_tree().current_scene.get_node("TileMapLayer")
-				for tile in door_memory[id][t]:
-					tilemap.set_cell(tile,0,atlas_cord)
-		var unlocked_tilemap = get_tree().current_scene.get_node(locked_tilemaps[id])
-		unlocked_tilemap.set_visible(true)
