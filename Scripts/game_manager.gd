@@ -18,7 +18,6 @@ signal memory_collected(id: int)
 @export var increase_rate: float = 5
 var mental_health: float = max_mental
 
-var player_pos: Vector2 = Vector2(200,0)
 var enter_side: String  = ""
 var corridor_offset: int = 0
 var current_animation: String = "face"
@@ -40,14 +39,25 @@ func _ready() -> void:
 	game_over.connect(_on_game_over)
 	AudioController.play_sound(0)
 
+func start():
+	is_playing_box = false
+	is_playing_memory = false
+	is_rewind_box = false
+	plateEnigme = {}
+	memories = [false, false, false]
+	mental_health = max_mental
+
 func _process(delta) -> void:
+	print(mental_health)
+	if get_tree().current_scene is Control:
+		return
 	if is_playing_memory: 
 		return
 	
 	if not is_playing_box:
 		mental_health -= (decrease_rate * delta)
 		if mental_health <= 0:
-			game_over.emit()	
+			game_over.emit()
 		mental_health_decrease.emit(mental_health)
 	else:
 		if mental_health > max_mental:

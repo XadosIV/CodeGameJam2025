@@ -44,6 +44,7 @@ unique_name_in_owner = true
 [node name="Memory" parent="." instance=ExtResource("6_01a48")]
 z_index = 1
 position = Vector2(-543, -367)
+memory_id = 1
 
 [node name="PointLight2D2" type="PointLight2D" parent="."]
 position = Vector2(-6.11053, -884.428)
